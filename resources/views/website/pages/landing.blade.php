@@ -45,7 +45,7 @@
                 <ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
 
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="features-tab-1">
+                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-1">
                             <h4>Kegiatan & Berita</h4>
                         </a>
                     </li><!-- End tab nav item -->
@@ -68,27 +68,109 @@
 
             <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
-                <div class="tab-pane fade" id="features-tab-1">
+                <div class="tab-pane fade recent-posts " id="features-tab-1">
                     <div class="row">
-                        <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-                            <h3>Voluptatem dignissimos provident</h3>
-                            <p class="fst-italic">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore
-                                magna aliqua.
-                            </p>
-                            <ul>
-                                <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
-                                        voluptate velit.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
-                                        storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                            </ul>
+                        {{-- event item --}}
+                        <div class="col-xl-4 col-md-6">
+                            <div class="post-item position-relative h-100 d-flex flex-column" data-aos="fade-up"
+                                data-aos-delay="100">
+
+                                <div class="post-img position-relative overflow-hidden">
+                                    <img src="https://webinar.bkn14.com/uploads/poster/Unl7t5BfyKpQE8dtkKKjEIntMzwMIs-metaV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNi0xOSBhdCAwOC40Ny4yMl8wMDQ0OWQxNS5qcGc=-.jpg"
+                                        class="img-fluid" alt=""
+                                        style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
+                                </div>
+
+                                <div class="post-content d-flex flex-column flex-grow-1">
+                                    <h3 class="post-title">Bimtek E-Kinerja Lingkungan Pemerintahan Kab Pegunungan Arfak
+                                    </h3>
+
+                                    <ul class="list-unstyled mb-3">
+                                        <li><i class="bi bi-calendar-event me-2 text-danger"></i>
+                                            <span class="opacity-50">19 Juni 2025, 07:00 WIT</span>
+                                        </li>
+                                        <li><i class="bi bi-geo-alt me-2 text-success"></i>
+                                            <span class="opacity-50">Hotel Fujita Manokwari</span>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto">
+                                        <hr>
+                                        <a href="#" class="cta-event">
+                                            <i class="bi bi-info-circle me-1"></i>
+                                            Detail Event
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="col-lg-6 order-1 order-lg-2 text-center">
-                            <img src="assets1/img/hero_5.jpg" alt="" class="img-fluid">
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="post-item position-relative h-100 d-flex flex-column" data-aos="fade-up"
+                                data-aos-delay="100">
+
+                                <div class="post-img position-relative overflow-hidden">
+                                    <img src="https://webinar.bkn14.com/uploads/poster/zJeCefoJcPcAzCidGOWbyW6Xowy2iA-metaV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNi0xMyBhdCAwNS4yNS41MV9jNjAwNWJiOS5qcGc=-.jpg"
+                                        class="img-fluid" alt=""
+                                        style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
+                                </div>
+
+                                <div class="post-content d-flex flex-column flex-grow-1">
+                                    <h3 class="post-title">Rakornis Kepegawaian Provinsi Papua Barat</h3>
+
+                                    <ul class="list-unstyled mb-3">
+                                        <li><i class="bi bi-calendar-event me-2 text-danger"></i>
+                                            <span class="opacity-50">16 Jun 2025, 06:59 WIT</span>
+                                        </li>
+                                        <li><i class="bi bi-geo-alt me-2 text-success"></i>
+                                            <span class="opacity-50">Zoom Meeting</span>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto">
+                                        <hr>
+                                        <a href="#" class="cta-event">
+                                            <i class="bi bi-info-circle me-1"></i>
+                                            Detail Event
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-md-6">
+                            <div class="post-item position-relative h-100 d-flex flex-column" data-aos="fade-up"
+                                data-aos-delay="100">
+
+                                <div class="post-img position-relative overflow-hidden">
+                                    <img src="https://webinar.bkn14.com/uploads/poster/1nxOGdZIa5ANXG4d7LclTxmC3pcNDJ-metacG9zdGVyLnBuZw==-.png"
+                                        class="img-fluid" alt=""
+                                        style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
+                                </div>
+
+                                <div class="post-content d-flex flex-column flex-grow-1">
+                                    <h3 class="post-title">Pendampingan Penyelesaian Disparitas Data Dalam Rangka
+                                        Peningkatan Kualitas Data ASN
+                                    </h3>
+
+                                    <ul class="list-unstyled mb-3">
+                                        <li><i class="bi bi-calendar-event me-2 text-danger"></i>
+                                            <span class="opacity-50">18 Jul 2025, 14:00 WIT</span>
+                                        </li>
+                                        <li><i class="bi bi-geo-alt me-2 text-success"></i>
+                                            <span class="opacity-50">Zoom Meeting</span>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-auto">
+                                        <hr>
+                                        <a href="#" class="cta-event">
+                                            <i class="bi bi-info-circle me-1"></i>
+                                            Detail Event
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -97,7 +179,8 @@
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                             <h3>Pengumuman</h3>
-                            <h5 class="fst-italic">Pengumuman Penting! Jangan lewatkan informasi terbaru ini. Pastikan untuk
+                            <h5 class="fst-italic">Pengumuman Penting! Jangan lewatkan informasi terbaru ini. Pastikan
+                                untuk
                                 menyimak dan mengikuti arahan selengkapnya.</h5>
                             <ul>
                                 @foreach ($announcement as $item)
@@ -122,7 +205,8 @@
                                         consequat.</span></li>
                                 <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in
                                         voluptate velit.</span></li>
-                                <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores dolores
+                                <li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores
+                                        dolores
                                         quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
                             </ul>
                             <p class="fst-italic">

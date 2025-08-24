@@ -2592,3 +2592,23 @@ section,
     color: var(--contrast-color);
     transform: scale(1.1);
 }
+
+/*  */
+.cta-event {
+    font-family: var(--font-default);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    padding: 12px 40px;
+    transition: 0.5s;
+    color: var(--contrast-color);
+    background: var(--accent-color);
+}
+
+.cta-event:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+    color: var(--contrast-color);
+}
