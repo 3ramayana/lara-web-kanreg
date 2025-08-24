@@ -276,13 +276,13 @@
                             <div class="swiper-slide">
                                 <div class="service-item">
                                     <div class="service-item-contents">
-                                        <a href="#">
+                                        <a href="detail-post/{{ $item->slug }}">
                                             <span class="service-item-category">Artikel Kepegawaian</span>
                                             <h2 class="service-item-title">{{ $item->title }}</h2>
                                         </a>
                                     </div>
                                     <img src="uploads/{{ $item->thumbnail }}" alt="Image" class="img-fluid"
-                                        style="min-height: 450px; max-height:450px; min-width:450px;max-width:450px">
+                                        style="min-height: 450px; max-height:450px; min-width:450px; max-width:450px; object-fit: cover">
                                 </div>
                             </div>
                         @endforeach

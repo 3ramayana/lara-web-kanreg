@@ -1155,11 +1155,7 @@ section,
 
 .services-2 .service-item:before {
     content: "";
-    background-color: color-mix(
-        in srgb,
-        var(--background-color),
-        transparent 50%
-    );
+    background-color: color-mix(in srgb, var(--default-color), transparent 50%);
     top: 0;
     left: 0;
     right: 0;
