@@ -187,7 +187,7 @@
 
                             <div class="post-img position-relative overflow-hidden">
                                 <img src="uploads/{{ $item->thumbnail }}" class="img-fluid" alt=""
-                                    style="min-height: 300px; max-height:300px; min-width:450px;max-width:450px">
+                                    style="min-height: 300px; max-height:300px; min-width:450px; max-width:450px; object-fit: cover">
                                 <span class="post-date">{{ $item->created_at->format('d F') }}</span>
                             </div>
 
