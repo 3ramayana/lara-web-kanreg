@@ -1099,6 +1099,22 @@ section,
     text-transform: uppercase;
     font-size: 1.3rem;
 }
+.about .btn-cta {
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    border-radius: 6px;
+}
+
+.about .btn-cta:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+    color: var(--contrast-color);
+}
 
 /*--------------------------------------------------------------
 # Services 2 Section
@@ -1514,7 +1530,7 @@ section,
     border-radius: 50px;
     transition: 0.5s;
     margin: 10px;
-    color: #fff;
+    color: var(--contrast-color);
     background: var(--accent-color);
 }
 

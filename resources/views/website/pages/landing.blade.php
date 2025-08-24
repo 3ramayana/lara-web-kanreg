@@ -156,9 +156,9 @@
                         <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
                             <h3 class="content-subtitle text-white opacity-50">Headline</h3>
                             <h2 class="content-title mb-4">{{ $item->title }}</h2>
-                            <p class="opacity-50">{!! strip_tags(Str::words($item->content, 100, '...')) !!}</p>
+                            <p class="opacity-50 mb-5">{!! strip_tags(Str::words($item->content, 50, '...')) !!}</p>
 
-                            <p><a href="detail-post/{{ $item->slug }}" class="btn-cta">Get in touch</a></p>
+                            <p><a href="detail-post/{{ $item->slug }}" class="btn-cta">Read More</a></p>
 
                         </div>
                     @endforeach
