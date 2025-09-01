@@ -71,107 +71,45 @@
                 <div class="tab-pane fade recent-posts " id="features-tab-1">
                     <div class="row">
                         {{-- event item --}}
-                        <div class="col-xl-4 col-md-6">
-                            <div class="post-item position-relative h-100 d-flex flex-column" data-aos="fade-up"
-                                data-aos-delay="100">
+                        @foreach ($events as $event)
+                            <div class="col-xl-4 col-md-6">
+                                <div class="post-item position-relative h-100 d-flex flex-column" data-aos="fade-up"
+                                    data-aos-delay="100">
 
-                                <div class="post-img position-relative overflow-hidden">
-                                    <img src="https://webinar.bkn14.com/uploads/poster/Unl7t5BfyKpQE8dtkKKjEIntMzwMIs-metaV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNi0xOSBhdCAwOC40Ny4yMl8wMDQ0OWQxNS5qcGc=-.jpg"
-                                        class="img-fluid" alt=""
-                                        style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
-                                </div>
-
-                                <div class="post-content d-flex flex-column flex-grow-1">
-                                    <h3 class="post-title">Bimtek E-Kinerja Lingkungan Pemerintahan Kab Pegunungan Arfak
-                                    </h3>
-
-                                    <ul class="list-unstyled mb-3">
-                                        <li><i class="bi bi-calendar-event me-2 text-danger"></i>
-                                            <span class="opacity-50">19 Juni 2025, 07:00 WIT</span>
-                                        </li>
-                                        <li><i class="bi bi-geo-alt me-2 text-success"></i>
-                                            <span class="opacity-50">Hotel Fujita Manokwari</span>
-                                        </li>
-                                    </ul>
-                                    <div class="mt-auto">
-                                        <hr>
-                                        <a href="#" class="cta-event">
-                                            <i class="bi bi-info-circle me-1"></i>
-                                            Detail Event
-                                        </a>
+                                    <div class="post-img position-relative overflow-hidden">
+                                        <img src="{{ $event['poster'] }}" class="img-fluid" alt=""
+                                            style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
                                     </div>
-                                </div>
 
-                            </div>
-                        </div>
+                                    <div class="post-content d-flex flex-column flex-grow-1">
+                                        <h3 class="post-title">{{ $event['judul'] }}</h3>
 
-                        <div class="col-xl-4 col-md-6">
-                            <div class="post-item position-relative h-100 d-flex flex-column" data-aos="fade-up"
-                                data-aos-delay="100">
-
-                                <div class="post-img position-relative overflow-hidden">
-                                    <img src="https://webinar.bkn14.com/uploads/poster/zJeCefoJcPcAzCidGOWbyW6Xowy2iA-metaV2hhdHNBcHAgSW1hZ2UgMjAyNS0wNi0xMyBhdCAwNS4yNS41MV9jNjAwNWJiOS5qcGc=-.jpg"
-                                        class="img-fluid" alt=""
-                                        style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
-                                </div>
-
-                                <div class="post-content d-flex flex-column flex-grow-1">
-                                    <h3 class="post-title">Rakornis Kepegawaian Provinsi Papua Barat</h3>
-
-                                    <ul class="list-unstyled mb-3">
-                                        <li><i class="bi bi-calendar-event me-2 text-danger"></i>
-                                            <span class="opacity-50">16 Jun 2025, 06:59 WIT</span>
-                                        </li>
-                                        <li><i class="bi bi-geo-alt me-2 text-success"></i>
-                                            <span class="opacity-50">Zoom Meeting</span>
-                                        </li>
-                                    </ul>
-                                    <div class="mt-auto">
-                                        <hr>
-                                        <a href="#" class="cta-event">
-                                            <i class="bi bi-info-circle me-1"></i>
-                                            Detail Event
-                                        </a>
+                                        <ul class="list-unstyled mb-3">
+                                            <li><i class="bi bi-calendar-event me-2 text-danger"></i>
+                                                <span
+                                                    class="opacity-50">{{ \Carbon\Carbon::parse($event['tanggal_pelaksanaan'])->timezone('Asia/Jayapura')->locale('id')->translatedFormat('d F Y, H:i') }}
+                                                    WIT</span>
+                                            </li>
+                                            <li><i class="bi bi-geo-alt me-2 text-success"></i>
+                                                <span class="opacity-50">
+                                                    {!! !empty($event['zoomlink']) && $event['zoomlink'] !== '-' ? 'Zoom Meeting' : '-' !!}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <hr>
+                                            <a href="{{ env('API_WEBINAR_URL') . '/agenda/' . $event['slug'] }}"
+                                                class="cta-event" target="_blank">
+                                                <i class="bi bi-info-circle me-1"></i>
+                                                Detail Event
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
 
-                        <div class="col-xl-4 col-md-6">
-                            <div class="post-item position-relative h-100 d-flex flex-column" data-aos="fade-up"
-                                data-aos-delay="100">
-
-                                <div class="post-img position-relative overflow-hidden">
-                                    <img src="https://webinar.bkn14.com/uploads/poster/1nxOGdZIa5ANXG4d7LclTxmC3pcNDJ-metacG9zdGVyLnBuZw==-.png"
-                                        class="img-fluid" alt=""
-                                        style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
-                                </div>
-
-                                <div class="post-content d-flex flex-column flex-grow-1">
-                                    <h3 class="post-title">Pendampingan Penyelesaian Disparitas Data Dalam Rangka
-                                        Peningkatan Kualitas Data ASN
-                                    </h3>
-
-                                    <ul class="list-unstyled mb-3">
-                                        <li><i class="bi bi-calendar-event me-2 text-danger"></i>
-                                            <span class="opacity-50">18 Jul 2025, 14:00 WIT</span>
-                                        </li>
-                                        <li><i class="bi bi-geo-alt me-2 text-success"></i>
-                                            <span class="opacity-50">Zoom Meeting</span>
-                                        </li>
-                                    </ul>
-                                    <div class="mt-auto">
-                                        <hr>
-                                        <a href="#" class="cta-event">
-                                            <i class="bi bi-info-circle me-1"></i>
-                                            Detail Event
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div><!-- End tab content item -->
 
