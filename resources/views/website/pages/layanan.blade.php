@@ -13,186 +13,215 @@
 <section id="services" class="services section">
     <div class="container">
         <div class="row gy-4">
-
+            {{-- Penetapan NIP dan NI PPPK --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Penetapan NIP dan NI PPPK</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan penetapan NIP dan NI PPPK</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Penetapan NIP dan NI PPPK oleh Instansi setelah peserta dinyatakan lulus seleksi.</p>
+                    <a href="/layanan/penetapan-nip-nipppk" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- CLTN --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Cuti diluar Tanggungan Negara</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Pemberian, Perpanjangan, Pengaktifan kembali
-                        CLTN</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Pemberian cuti diluar tanggungan negara kepada PNS karena alasan pribadi dan mendesak</p>
+                    <a href="/layanan/cltn" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- KP --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Kenaikan Pangkat</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Kenaikan Pangkat ( KP)</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Penghargaan bagi PNS baik yang menduduki jabatan fungsional umum atau tertentu dan jabatan
+                        struktural.</p>
+                    <a href="/layanan/kenaikan-pangkat" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- PMK --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Peninjauan Masa Kerja</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Pengajuan Peninjauan Masa Kerja (PMK)</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Penghitungan masa kerja yang dimiliki oleh PNS sebelum diangkat menjadi CPNS.</p>
+                    <a href="layanan/peninjauan-masa-kerja" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Mutasi --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Mutasi</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Mutasi</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Layanan pengelolaan perpindahan pegawai yang diproses melalui Kantor Regional XIV BKN Manokwari.
+                    </p>
+                    <a href="layanan/mutasi" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- PGA --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Pencantuman Gelar</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Pencantuman Gelar</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Pengakuan resmi bagi PNS atas gelar akademik atau vokasi yang telah diperoleh.</p>
+                    <a href="layanan/pencantuman-gelar" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Pensiun --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Pensiun</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Pensiun PNS</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Pensiun yang diberikan kepada PNS yang telah mencapai batas usia tertentu sebagai bentuk
+                        penghargaan atas pengabdian serta jaminan di hari tua.</p>
+                    <a href="layanan/pensiun" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Pensiun Janda/Duda --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Pensiun Janda/ Duda</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Pensiun Janda/Duda Pensiunan PNS</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Pensiun yang diberikan kepada janda atau duda dari PNS yang meninggal dunia, tewas, atau hilang.
+                    </p>
+                    <a href="layanan/pensiun-janda-duda" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Pengaktifan Kembali --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Pengaktifan Kembali PNS</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Pengaktifan Kembali PNS</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Pengembalian status aktif PNS yang sebelumnya diberhentikan sementara.</p>
+                    <a href="layanan/pengaktifan-pns" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Pengangkatan CPNS lebih 1 Tahun --}}
+            <div class="col-lg-3 col-md-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="bi bi-palette"></i>
+                    </div>
+                    <h3>Pengangkatan CPNS Lebih 1 Tahun</h3>
+                    <p>Pengangkatan CPNS melewati masa percobaan 1 tahun.</p>
+                    <a href="layanan/pengangkatan-cpns" class="service-link">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+            {{-- Peremajaan Data --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Peremajaan Data</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses usulan Peremajaan Data ASN</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Pemutakhiran data PNS secara elektronik oleh pengelola kepegawaian sesuai kewenangan Kantor
+                        Regional</p>
+                    <a href="layanan/peremajaan-data" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- CAT --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Fasilitasi Seleksi Metode CAT</h3>
-                    <p>Informasi Syarat dan Ketentuan dalam proses Fasilitasi seleksi metode Computer Assisted Test
-                        (CAT)</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Seleksi berbasis komputer</p>
+                    <a href="layanan/fasilitasi-seleksi-metode-cat" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Manajemen Talenta --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
-                    <h3>Pengembangan Karir ASN</h3>
-                    <p>Informasi tentang Penyusunan Rencana Pengembangan Karier</p>
-                    <a href="service-details.html" class="service-link">
+                    <h3>Manajemen Talenta</h3>
+                    <p>Sistem pengelolaan karier ASN berdasarkan potensi.</p>
+                    <a href="layanan/manajemen-talenta" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Pembinaan Manajemen --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Pembinaan Manajemen ASN</h3>
-                    <p>xx</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Pembinaan manajemen ASN yang berkelanjutan</p>
+                    <a href="layanan/pembinaan-manajemen-asn" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>
             </div>
-
+            {{-- Statistik Kepegawaian --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="bi bi-palette"></i>
                     </div>
                     <h3>Statistik Kepegawaian</h3>
-                    <p>Informasi tentang statistik pegawai di wilayah kerja Kantor Regional XIV BKN</p>
-                    <a href="service-details.html" class="service-link">
+                    <p>Informasi tentang statistik pegawai di wilayah kerja Kantor Regional XIV BKN Manokwari</p>
+                    <a href="layanan/statistik-kepegawaian" class="service-link">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+            {{-- Konsultasi Kepegawaian --}}
+            <div class="col-lg-3 col-md-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="bi bi-palette"></i>
+                    </div>
+                    <h3>Konsultasi Kepegawaian</h3>
+                    <p>Layanan konsultasi seputar permasalahan kepegawaian.</p>
+                    <a href="kontak" class="service-link">
                         <i class="bi bi-arrow-up-right"></i>
                     </a>
                 </div>

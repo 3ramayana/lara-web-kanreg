@@ -92,3 +92,79 @@ Route::get('layanan', function () {
 	return view('website.pages.layanan', compact('news'));
 });
 // Route::get('/', [LandingController::class,'functionHeadline']);
+
+// Menu Layanan Kantor Regional XIV BKN
+Route::get('layanan/penetapan-nip-nipppk', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.nip-nipppk', compact('news'));
+});
+
+Route::get('layanan/cltn', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.cltn', compact('news'));
+});
+
+Route::get('layanan/kenaikan-pangkat', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.kp', compact('news'));
+});
+
+Route::get('layanan/peninjauan-masa-kerja', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.pmk', compact('news'));
+});
+
+Route::get('layanan/mutasi', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.mutasi', compact('news'));
+});
+
+Route::get('layanan/pencantuman-gelar', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.pg', compact('news'));
+});
+
+Route::get('layanan/pensiun', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.pensiun', compact('news'));
+});
+
+Route::get('layanan/pensiun-janda-duda', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.pensiun-janda-duda', compact('news'));
+});
+
+Route::get('layanan/pengaktifan-pns', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.pengaktifan-pns', compact('news'));
+});
+
+Route::get('layanan/pengangkatan-cpns', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.pengangkatan-cpns', compact('news'));
+});
+
+Route::get('layanan/peremajaan-data', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.peremajaan-data', compact('news'));
+});
+
+Route::get('layanan/fasilitasi-seleksi-metode-cat', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.cat', compact('news'));
+});
+
+Route::get('layanan/manajemen-talenta', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.manajemen-talenta', compact('news'));
+});
+
+Route::get('layanan/pembinaan-manajemen-asn', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.pembinaan-manajemen', compact('news'));
+});
+
+Route::get('layanan/statistik-kepegawaian', function () {
+	$news = Post::dataSide()->get();
+	return view('website.pages.services.statistik', compact('news'));
+});
