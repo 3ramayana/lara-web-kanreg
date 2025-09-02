@@ -17,7 +17,8 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        {{-- <i class="bi bi-palette"></i> --}}
+                        <img src="{{ asset('icons/tapnip.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Penetapan NIP dan NI PPPK</h3>
                     <p>Penetapan NIP dan NI PPPK oleh Instansi setelah peserta dinyatakan lulus seleksi.</p>
@@ -30,7 +31,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/cltn.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Cuti diluar Tanggungan Negara</h3>
                     <p>Pemberian cuti diluar tanggungan negara kepada PNS karena alasan pribadi dan mendesak</p>
@@ -43,7 +44,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/kenaikan-pangkat.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Kenaikan Pangkat</h3>
                     <p>Penghargaan bagi PNS baik yang menduduki jabatan fungsional umum atau tertentu dan jabatan
@@ -57,7 +58,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/pmk.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Peninjauan Masa Kerja</h3>
                     <p>Penghitungan masa kerja yang dimiliki oleh PNS sebelum diangkat menjadi CPNS.</p>
@@ -70,7 +71,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/mutasi.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Mutasi</h3>
                     <p>Layanan pengelolaan perpindahan pegawai yang diproses melalui Kantor Regional XIV BKN Manokwari.
@@ -84,7 +85,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/pencantuman-gelar.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Pencantuman Gelar</h3>
                     <p>Pengakuan resmi bagi PNS atas gelar akademik atau vokasi yang telah diperoleh.</p>
@@ -97,7 +98,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/pensiun.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Pensiun</h3>
                     <p>Pensiun yang diberikan kepada PNS yang telah mencapai batas usia tertentu sebagai bentuk
@@ -111,7 +112,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/pensiun-janda-duda.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Pensiun Janda/ Duda</h3>
                     <p>Pensiun yang diberikan kepada janda atau duda dari PNS yang meninggal dunia, tewas, atau hilang.
@@ -125,7 +126,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/aktif.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Pengaktifan Kembali PNS</h3>
                     <p>Pengembalian status aktif PNS yang sebelumnya diberhentikan sementara.</p>
@@ -138,7 +139,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/cpns.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Pengangkatan CPNS Lebih 1 Tahun</h3>
                     <p>Pengangkatan CPNS melewati masa percobaan 1 tahun.</p>
@@ -151,7 +152,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/peremajaan.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Peremajaan Data</h3>
                     <p>Pemutakhiran data PNS secara elektronik oleh pengelola kepegawaian sesuai kewenangan Kantor
@@ -165,7 +166,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/cat.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Fasilitasi Seleksi Metode CAT</h3>
                     <p>Seleksi berbasis komputer</p>
@@ -178,7 +179,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/talenta.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Manajemen Talenta</h3>
                     <p>Sistem pengelolaan karier ASN berdasarkan potensi.</p>
@@ -191,7 +192,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/manajemen-asn.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Pembinaan Manajemen ASN</h3>
                     <p>Pembinaan manajemen ASN yang berkelanjutan</p>
@@ -204,7 +205,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/statistik.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Statistik Kepegawaian</h3>
                     <p>Informasi tentang statistik pegawai di wilayah kerja Kantor Regional XIV BKN Manokwari</p>
@@ -217,7 +218,7 @@
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="bi bi-palette"></i>
+                        <img src="{{ asset('icons/konsultasi.svg') }}" alt="Menu Icon">
                     </div>
                     <h3>Konsultasi Kepegawaian</h3>
                     <p>Layanan konsultasi seputar permasalahan kepegawaian.</p>
