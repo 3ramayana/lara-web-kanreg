@@ -20,7 +20,9 @@ class LandingController extends Controller
 
 		$announcement = Announcement::where('is_active', 1)->orderBy('created_at', 'DESC')->take(6)->get();
 
-		$response = Http::get(env('API_WEBINAR_URL') . '/api/agendas');
+		$response = Http::withHeaders([
+			'X-API-KEY' => env('APP_API_KEY'),
+		])->get(env('API_WEBINAR_URL') . '/api/agendas');
 
 		if ($response->successful()) {
 			$json = $response->json();
