@@ -24,8 +24,7 @@
 
             <div class="meta-top">
                 <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John
-                            Doe</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> Admin Web</li>
                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
                         {{ $post->created_at->locale('id')->translatedFormat('d F Y') }}
                     </li>
