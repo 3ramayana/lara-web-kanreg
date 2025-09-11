@@ -56,11 +56,12 @@
                         </a><!-- End tab nav item -->
 
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" data-bs-target="features-tab-3">
                             <h4>FAQ</h4>
                         </a>
-                    </li><!-- End tab nav item -->
+                    </li> --}}
+                    <!-- End tab nav item -->
 
                 </ul>
 
@@ -134,7 +135,7 @@
                     </div>
                 </div><!-- End tab content item -->
 
-                <div class="tab-pane fade" id="features-tab-3">
+                {{-- <div class="tab-pane fade" id="features-tab-3">
                     <div class="row">
                         <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
                             <h3>Voluptatibus commodi accusamu</h3>
@@ -157,7 +158,8 @@
                             <img src="assets/img/features-illustration-3.webp" alt="" class="img-fluid">
                         </div>
                     </div>
-                </div><!-- End tab content item -->
+                </div> --}}
+                <!-- End tab content item -->
 
             </div>
 
