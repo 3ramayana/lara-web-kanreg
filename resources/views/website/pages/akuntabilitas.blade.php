@@ -29,7 +29,8 @@
                         </div>
 
                         <div class="meta d-flex align-items-end">
-                            <span class="post-date">{{ $item->created_at->format('d F') }}</span>
+                            <span
+                                class="post-date">{{ $item->created_at->locale('id')->translatedFormat('d F Y') }}</span>
                             <div class="d-flex align-items-center">
                                 <i class="bi bi-person"></i> <span class="ps-2">Admin Web</span>
                             </div>

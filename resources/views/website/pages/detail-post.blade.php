@@ -26,10 +26,9 @@
                 <ul>
                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John
                             Doe</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time
-                                datetime="2020-01-01">{{ $post->created_at->format('d M Y') }}</time></a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12
-                            Comments</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i>
+                        {{ $post->created_at->locale('id')->translatedFormat('d F Y') }}
+                    </li>
                 </ul>
             </div><!-- End meta top -->
 
