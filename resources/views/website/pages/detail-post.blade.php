@@ -36,15 +36,15 @@
             <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
                 <ul class="cats">
-                    <li><a href="#">Business</a></li>
+                    <li><a href="#">{{ $post->categories->name }}</a></li>
                 </ul>
 
-                <i class="bi bi-tags"></i>
+                {{-- <i class="bi bi-tags"></i>
                 <ul class="tags">
                     <li><a href="#">Creative</a></li>
                     <li><a href="#">Tips</a></li>
                     <li><a href="#">Marketing</a></li>
-                </ul>
+                </ul> --}}
             </div><!-- End meta bottom -->
 
         </article>

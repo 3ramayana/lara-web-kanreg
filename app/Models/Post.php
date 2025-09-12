@@ -11,7 +11,13 @@ class Post extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
     protected $fillable = [
-        'category_id', 'title', 'slug', 'content', 'status', 'is_headline', 'thumbnail'
+        'category_id',
+        'title',
+        'slug',
+        'content',
+        'status',
+        'is_headline',
+        'thumbnail'
     ];
 
     public function categories()
@@ -24,11 +30,11 @@ class Post extends Model implements HasMedia
         return $this->belongsToMany(Tag::class);
     }
 
-		public function scopeDataSide($query, $limit = 6)
-		{
-			return $query->with('categories')
+    public function scopeDataSide($query, $limit = 6)
+    {
+        return $query->with('categories')
             ->where('category_id', 1)
             ->orderBy('created_at', 'desc')
             ->take($limit);
-		}
+    }
 }
