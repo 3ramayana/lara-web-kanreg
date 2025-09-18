@@ -1531,8 +1531,8 @@ section,
 }
 
 .call-to-action .cta-btn:hover {
-    background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
-    color: var(--contrast-color);
+    background-color: var(--contrast-color);
+    color: var(--accent-color);
 }
 /*--------------------------------------------------------------
 # About 3 Section

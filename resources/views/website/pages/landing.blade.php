@@ -46,7 +46,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-                            <h4>Kegiatan & Berita</h4>
+                            <h4>Agenda</h4>
                         </a>
                     </li><!-- End tab nav item -->
 

@@ -165,6 +165,6 @@ Route::get('layanan/pembinaan-manajemen-asn', function () {
 });
 
 Route::get('layanan/statistik-kepegawaian', function () {
-	$news = Post::dataSide()->get();
-	return view('website.pages.services.statistik', compact('news'));
+	$statistik = Document::with(['categories'])->where('category_id', 5)->where('is_public', 1)->orderBy('created_at', 'desc')->paginate(9);
+	return view('website.pages.services.statistik', compact("statistik"));
 });

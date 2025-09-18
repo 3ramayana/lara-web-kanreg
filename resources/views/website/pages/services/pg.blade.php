@@ -34,8 +34,8 @@
                     </li>
                     <li class="d-flex mb-2 align-items-center">
                         <i class="bi bi-file-earmark-text fs-4 me-2"></i>
-                        <span>SE Menteri PAN dan RB No. 4 Tahun 2013 Tentang Pemberian Tugas Belajar Dan Izin
-                            Belajar</span>
+                        <span>SE Kepala Badan Kepegawaian Negara No. 15 Tahun 2024 tentang Penjelasan Teknis
+                            Layanan Pencantuman Gelar dan Peningkatan Pendidilan Pegawai Negeri Sipil. </span>
                     </li>
                 </ul>
 
