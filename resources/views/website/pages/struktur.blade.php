@@ -17,37 +17,109 @@
 						<img src="{{asset('bkn/struktur.png')}}" alt="" class="img-fluid">
 					</a>
 		
+					<br>
+					<h2 class="category-title">Kepala Badan Kepegawaian Negara</h2>
+					@foreach ($kepalaBkn as $item)
+						<div class="d-md-flex small-img">
+						<img src="uploads/{{ $item->photo }}" alt="Foto Pegawai" class="img-fluid" style="min-height: 100px; max-height:150px; min-width:auto; max-width:205px; object-fit: cover">
+						<div>
+							<table class="table table-hover">
+								<tbody>
+									<tr>
+										<td>Nama Lengkap</td>
+										<td>:</td>
+										<td>{{$item->name}}</td>
+									</tr>
+									<tr>
+										<td>NIP</td>
+										<td>:</td>
+										<td>{{$item->masked_nip}}</td>
+									</tr>
+									<tr>
+										<td>Jabatan</td>
+										<td>:</td>
+										<td>{{$item->position}}</td>
+									</tr>
+									<tr>
+										<td>Unit Kerja</td>
+										<td>:</td>
+										<td>{{$item->departement->name}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				@endforeach
+
+				<br>
 					<h2 class="category-title">Kepala Kantor Regional XIV BKN</h2>
 
-				<div class="d-md-flex small-img">
-					<img src="{{asset('bkn/diana.jpg')}}" alt="" class="img-fluid" style="min-height: 150px; max-height:150px; min-width:205px;max-width:205px">
-					<div>
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<td>Nama Lengkap</td>
-									<td>:</td>
-									<td>Hardianawati</td>
-								</tr>
-								<tr>
-									<td>NIP</td>
-									<td>:</td>
-									<td>1932232323232332</td>
-								</tr>
-								<tr>
-									<td>Pangkat/Golongan Ruang</td>
-									<td>:</td>
-									<td>IVd/</td>
-								</tr>
-								<tr>
-									<td>Pendidikan Terakhir</td>
-									<td>:</td>
-									<td>IVd/</td>
-								</tr>
-							</tbody>
-						</table>
+				@foreach ($kepalaRegional as $item)
+						<div class="d-md-flex small-img">
+						<img src="uploads/{{ $item->photo }}" alt="Foto Pegawai" class="img-fluid" style="min-height: 100px; max-height:150px; min-width:auto; max-width:205px; object-fit: cover">
+						<div>
+							<table class="table table-hover">
+								<tbody>
+									<tr>
+										<td>Nama Lengkap</td>
+										<td>:</td>
+										<td>{{$item->name}}</td>
+									</tr>
+									<tr>
+										<td>NIP</td>
+										<td>:</td>
+										<td>{{$item->masked_nip}}</td>
+									</tr>
+									<tr>
+										<td>Jabatan</td>
+										<td>:</td>
+										<td>{{$item->position}}</td>
+									</tr>
+									<tr>
+										<td>Unit Kerja</td>
+										<td>:</td>
+										<td>{{$item->departement->name}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
-				</div>
+				@endforeach
+				
+				<br>
+				<h2 class="category-title">Kelompok Jabatan Fungsional</h2>
+
+				@foreach ($fungsional as $item)
+						<div class="d-md-flex small-img">
+						<img src="uploads/{{ $item->photo }}" alt="Foto Pegawai" class="img-fluid" style="min-height: 100px; max-height:150px; min-width:auto; max-width:205px; object-fit: cover">
+						<div>
+							<table class="table table-hover">
+								<tbody>
+									<tr>
+										<td>Nama Lengkap</td>
+										<td>:</td>
+										<td>{{$item->name}}</td>
+									</tr>
+									<tr>
+										<td>NIP</td>
+										<td>:</td>
+										<td>{{$item->masked_nip}}</td>
+									</tr>
+									<tr>
+										<td>Jabatan</td>
+										<td>:</td>
+										<td>{{$item->position}}</td>
+									</tr>
+									<tr>
+										<td>Unit Kerja</td>
+										<td>:</td>
+										<td>{{$item->departement->name}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				@endforeach
 				</div>
 			</div>
 		</section>

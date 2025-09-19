@@ -68,7 +68,7 @@ class AnnouncementResource extends Resource
 										->limit(10)
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('file')
-										->disk('public_uploads')
+					->disk('public_uploads')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('link')
                     ->searchable(),

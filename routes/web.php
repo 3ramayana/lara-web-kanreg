@@ -5,6 +5,7 @@ use App\Models\Post;
 use App\Models\Answer;
 use App\Models\Banner;
 use App\Models\Document;
+use App\Models\Employee;
 use App\Models\Question;
 use GuzzleHttp\Psr7\Request;
 use App\Models\AnswerQuestion;
@@ -48,7 +49,12 @@ Route::get('tusi', function () {
 
 Route::get('struktur', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.struktur', compact('news'));
+	// $employee = Employee::all();
+	$kepalaBkn = Employee::category('kepala_bkn')->get();
+	$kepalaRegional = Employee::category('kepala_regional')->get();
+	$fungsional = Employee::category('fungsional')->get();
+
+	return view('website.pages.struktur', compact('news', 'kepalaBkn', 'kepalaRegional', 'fungsional'));
 });
 
 Route::get('akuntabilitas', function () {

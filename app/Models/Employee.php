@@ -13,6 +13,9 @@ class Employee extends Model
 			'departement_id',
 			'position',
 			'nip',
+			'photo',
+			'lhkpn',
+			'category'
 			];
 
 		public function letterin()
@@ -24,5 +27,31 @@ class Employee extends Model
 		{
 			return $this->belongsTo(Departement::class);
 		}
+
+		public function scopeCategory($query, $category)
+    {
+        return $query->where('category', $category);
+    }
+
+		public function getMaskedNipAttribute()
+    {
+        $nip = $this->attributes['nip'];
+
+        // ambil 6 digit pertama
+        $prefix = substr($nip, 0, 6);
+
+        // ambil 2 digit terakhir
+        $suffix = substr($nip, -2);
+
+        // hitung jumlah digit yang harus dimasking
+        $maskLength = strlen($nip) - (strlen($prefix) + strlen($suffix));
+
+        // buat masking
+        $masked = str_repeat('*', $maskLength);
+
+        return $prefix . $masked . $suffix;
+    }
+
+
 
 }
