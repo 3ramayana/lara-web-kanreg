@@ -47,6 +47,8 @@ class EmployeeResource extends Resource
                             ->options([
                                 'kepala_bkn' => 'Kepala BKN',
                                 'kepala_regional' => 'Kepala Kantor Regional XIV BKN',
+                                'administrator' => 'Pejabat Administrator',
+                                'pengawas' => 'Pejabat Pengawas',
                                 'fungsional' => 'fungsional'
                             ])
                             ->required()
@@ -60,6 +62,14 @@ class EmployeeResource extends Resource
                         ->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
                         ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png'])
                         ->rules(['mimes:pdf,jpg,png']),
+                    Forms\Components\FileUpload::make('lhkpn')
+                        ->label('Masukkan Dokumen LHKPN')
+                        ->directory('lhkpn')
+                        ->disk('public_uploads')
+                        ->maxSize(6000)
+                        ->helperText('Hanya file dokumen (PDF). Maksimal ukuran 2 MB.')
+                        ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
+                        ->rules(['mimes:pdf']),
                 ])
             ]);
     }

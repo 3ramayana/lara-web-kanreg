@@ -17,6 +17,9 @@ return new class extends Migration
 						$table->foreignId('departement_id')->constrained()->onDelete('cascade');
 						$table->string('position');
 						$table->string('nip');
+                        $table->string('photo')->nullable();
+                        $table->string('lhkpn')->nullable();
+                        $table->enum('category', ['kepala_bkn', 'kepala_regional', 'administrator', 'pengawas', 'fungsional']);
             $table->timestamps();
         });
     }

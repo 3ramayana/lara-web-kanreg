@@ -52,9 +52,10 @@ Route::get('struktur', function () {
 	// $employee = Employee::all();
 	$kepalaBkn = Employee::category('kepala_bkn')->get();
 	$kepalaRegional = Employee::category('kepala_regional')->get();
-	$fungsional = Employee::category('fungsional')->get();
+	$administrator = Employee::category('administrator')->get();
+	$pengawas = Employee::category('pengawas')->get();
 
-	return view('website.pages.struktur', compact('news', 'kepalaBkn', 'kepalaRegional', 'fungsional'));
+	return view('website.pages.struktur', compact('news', 'kepalaBkn', 'kepalaRegional', 'pengawas', 'administrator'));
 });
 
 Route::get('akuntabilitas', function () {
