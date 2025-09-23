@@ -48,6 +48,7 @@ Route::get('tusi', function () {
 });
 
 Route::get('struktur', function () {
+	$struktur = Banner::select('file')->where('category', 'struktur_kanreg')->get();
 	$news = Post::dataSide()->get();
 	// $employee = Employee::all();
 	$kepalaBkn = Employee::category('kepala_bkn')->get();
@@ -55,7 +56,16 @@ Route::get('struktur', function () {
 	$administrator = Employee::category('administrator')->get();
 	$pengawas = Employee::category('pengawas')->get();
 
-	return view('website.pages.struktur', compact('news', 'kepalaBkn', 'kepalaRegional', 'pengawas', 'administrator'));
+	return view('website.pages.struktur', compact('news', 'kepalaBkn', 'kepalaRegional', 'pengawas', 'administrator', 'struktur'));
+});
+
+Route::get('pimpinan', function () {
+	$struktur = Banner::select('file')->where('category', 'struktur_pimpinan')->get();
+	$news = Post::dataSide()->get();
+	$kepalaBkn = Employee::category('kepala_bkn')->get();
+	$jptm = Employee::category('jptm')->get();
+
+	return view('website.pages.pimpinan', compact('news', 'jptm', 'struktur', 'kepalaBkn'));
 });
 
 Route::get('akuntabilitas', function () {
@@ -173,5 +183,13 @@ Route::get('layanan/pembinaan-manajemen-asn', function () {
 
 Route::get('layanan/statistik-kepegawaian', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.statistik', compact('news'));
+	$akuntabilitas = Document::with(['categories'])->where('category_id', 5)->where('is_public', 1)->orderBy('created_at', 'desc')->paginate(10);
+	return view('website.pages.services.statistik', compact('news', 'akuntabilitas'));
+});
+
+Route::get('agenda', function () {
+	$agenda = Banner::select('file')->where('category', 'agenda')->get();
+	$news = Post::dataSide()->get();
+
+	return view('website.pages.agenda', compact('news','agenda'));
 });

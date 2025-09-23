@@ -14,7 +14,7 @@ class LandingController extends Controller
 {
 	public function index()
 	{
-		$banner = Banner::select('file')->get();
+		$banner = Banner::select('file')->where('category', 'banner')->get();
 		$headline = Post::with(['categories'])->orderBy('created_at', 'desc')->where('status', 1)->where('is_headline', 1)->take(1)->get();
 		$article = Post::with(['categories'])->where('category_id', 2)->where('status', 1)->orderBy('created_at', 'desc')->take(6)->get();
 		$news = Post::with(['categories'])->where('category_id', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(6)->get();

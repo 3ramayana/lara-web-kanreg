@@ -447,14 +447,13 @@
         <div class="container" data-aos="fade-up">
             <div class="row justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <h3>KONSULTASI VIA WHATSAPP</h3>
+                    <h3>SURVEY KEPUASAN MASYARAKAT</h3>
                     <p>Melangkah ke dunia konsultasi virtual, menjembatani jarak dengan bijak. Kini, solusi hadir di layar,
                         pertanyaan dijawab tanpa batas ruang dan waktu. Bersama-sama kita temukan pemahaman baru, satu
                         konsultasi virtual pada satu kesempatan</p>
-                    <a class="cta-btn" href="http://wa.me/+6282138868989" target="_blank">Ajukan</a>
+                    <a class="cta-btn" href="https://skm.bkn14.com/" target="_blank">Isi Survey</a>
                 </div>
             </div>
-
         </div>
     </section>
 @endsection

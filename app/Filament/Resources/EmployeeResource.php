@@ -46,6 +46,7 @@ class EmployeeResource extends Resource
                     Forms\Components\Select::make('category')
                             ->options([
                                 'kepala_bkn' => 'Kepala BKN',
+                                'jptm' => 'JPT Madya',
                                 'kepala_regional' => 'Kepala Kantor Regional XIV BKN',
                                 'administrator' => 'Pejabat Administrator',
                                 'pengawas' => 'Pejabat Pengawas',

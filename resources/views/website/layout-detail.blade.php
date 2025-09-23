@@ -53,7 +53,7 @@
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
 
-                    <blockquote class="twitter-tweet">
+                    {{-- <blockquote class="twitter-tweet">
                         <p lang="in" dir="ltr">Penyesuaian kembali jadwal Seleksi untuk PPPK Tahap II.
                             <br><br>Yukk lengkapi persyaratanya dan segera selesaikan pendaftaranmu.<a
                                 href="https://twitter.com/hashtag/PejuangNIP2025?src=hash&amp;ref_src=twsrc%5Etfw">#PejuangNIP2025</a><a
@@ -65,7 +65,7 @@
                             href="https://twitter.com/BKNgoid/status/1876247086745936255?ref_src=twsrc%5Etfw">January 6,
                             2025</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
 
 
                     <!-- Recent Posts Widget 2 -->
@@ -91,7 +91,6 @@
                         <h3 class="widget-title">Tags</h3>
                         <ul>
                             <li><a href="#">ASNPelayanPublik</a></li>
-                            <li><a href="#">CASN2022</a></li>
                             <li><a href="#">ASNBelajarMandiri</a></li>
                             <li><a href="#">PendataanNonASN</a></li>
                             <li><a href="#">SatuDataASN</a></li>

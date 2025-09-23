@@ -19,7 +19,7 @@ return new class extends Migration
 						$table->string('nip');
                         $table->string('photo')->nullable();
                         $table->string('lhkpn')->nullable();
-                        $table->enum('category', ['kepala_bkn', 'kepala_regional', 'administrator', 'pengawas', 'fungsional']);
+                        $table->enum('category', ['kepala_bkn', 'jptm' ,'kepala_regional', 'administrator', 'pengawas', 'fungsional']);
             $table->timestamps();
         });
     }
