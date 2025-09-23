@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,13 +12,13 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-						$table->string('name');
-						$table->foreignId('departement_id')->constrained()->onDelete('cascade');
-						$table->string('position');
-						$table->string('nip');
-                        $table->string('photo')->nullable();
-                        $table->string('lhkpn')->nullable();
-                        $table->enum('category', ['kepala_bkn', 'jptm' ,'kepala_regional', 'administrator', 'pengawas', 'fungsional']);
+            $table->string('name');
+            $table->foreignId('departement_id')->constrained()->onDelete('cascade');
+            $table->string('position');
+            $table->string('nip');
+            $table->string('photo')->nullable();
+            $table->string('lhkpn')->nullable();
+            $table->enum('category', ['kepala_bkn', 'jptm', 'kepala_regional', 'administrator', 'pengawas', 'fungsional']);
             $table->timestamps();
         });
     }

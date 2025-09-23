@@ -102,9 +102,9 @@
             <h2 class="category-title">Kelompok Jabatan Pengawas</h2>
 
             @foreach ($pengawas as $item)
-						<br>
+                <br>
                 <div class="d-md-flex small-img">
-									
+
                     <img src="uploads/{{ $item->photo }}" alt="Foto Pegawai" class="img-fluid"
                         style="min-height: 100px; max-height:150px; min-width:auto; max-width:205px; object-fit: cover">
                     <div>
@@ -134,7 +134,7 @@
                         </table>
                     </div>
                 </div>
-								<br>
+                <br>
             @endforeach
         </div>
     </div>

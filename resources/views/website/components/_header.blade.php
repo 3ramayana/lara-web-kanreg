@@ -36,7 +36,7 @@
                         <li><a href="/agenda">Agenda Kegiatan</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"><span>Pelayanan Publik</span> <i
+                <li class="dropdown"><a href="#"><span>Pelayanan Terpadu</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="https://support-siasn.bkn.go.id/">Helpdesk SIASN</a></li>
@@ -44,6 +44,7 @@
                         <li><a href="https://wbs.bkn.go.id/">WBS BKN</a></li>
                         <li><a href="https://www.lapor.go.id/" target="_blank">LAPOR GO</a></li>
                         <li><a href="https://www.sipp.menpan.go.id/" target="_blank">SIPP Nasional</a></li>
+                        <li><a href="https://www.bkn.go.id/publikasi/e-library/" target="_blank">e-Library</a></li>
                     </ul>
                 </li>
                 <li><a href="/layanan">Layanan</a></li>
