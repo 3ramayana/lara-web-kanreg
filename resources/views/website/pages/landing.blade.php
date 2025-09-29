@@ -155,7 +155,7 @@
                         <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
                             <h4>Agenda & Kegiatan</h4>
                         </a>
-                    </li><!-- End tab nav item -->
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">

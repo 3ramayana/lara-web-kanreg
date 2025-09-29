@@ -35,54 +35,43 @@ class PostResource extends Resource
 
     protected static ?string $navigationGroup = 'Manajemen Postingan';
 
-
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Card::make()->schema([
-                    Select::make('category_id')
-                    ->relationship(name: 'categories', titleAttribute: 'name'),
-                    TextInput::make('title')
-                    ->live(onBlur:true)
-                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+        return $form->schema([
+            Card::make()->schema([
+                Select::make('category_id')->relationship(name: 'categories', titleAttribute: 'name'),
+                TextInput::make('title')->live(onBlur: true)->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))->required()->autocapitalize('words'),
+                TextInput::make('slug')->required()->readOnly(),
+                // SpatieMediaLibraryFileUpload::make('thumbnail'),
+                FileUpload::make('thumbnail')
                     ->required()
-                    ->autocapitalize('words'),
-                    TextInput::make('slug')
-                    ->required()
-                    ->readOnly(),
-                    // SpatieMediaLibraryFileUpload::make('thumbnail'),
-										FileUpload::make('thumbnail')
-										->required()
-										->label('Thumbnail Postingan')
-										->directory('post-thumbnail')
-										->disk('public_uploads')
-										->maxSize(2048)
-										->image()
-										->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
-										->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
-                    RichEditor::make('content')
-										->required(),
-                    // Toggle::make('status'),
-										Select::make('status')
-										->label('Status')
-										->options([
-												0 => 'Draft',
-												1 => 'Published',
-										])
-										->default(0) // Default: Draft
-										->required(),
-                    Select::make('is_headline')
-										->label('Postingan Headline')
-										->options([
-												0 => 'Bukan Headline',
-												1 => 'Headline',
-										])
-										->default(0) // Default: Draft
-										->required(),
-
-                ])
-            ]);
+                    ->label('Thumbnail Postingan')
+                    ->directory('post-thumbnail')
+                    ->disk('public_uploads')
+                    ->maxSize(2048)
+                    ->image()
+                    ->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
+                    ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
+                RichEditor::make('content')->required(),
+                // Toggle::make('status'),
+                Select::make('status')
+                    ->label('Status')
+                    ->options([
+                        0 => 'Draft',
+                        1 => 'Published',
+                    ])
+                    ->default(0) // Default: Draft
+                    ->required(),
+                Select::make('is_headline')
+                    ->label('Postingan Headline')
+                    ->options([
+                        0 => 'Bukan Headline',
+                        1 => 'Headline',
+                    ])
+                    ->default(0) // Default: Draft
+                    ->required(),
+            ]),
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -90,38 +79,29 @@ class PostResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id'),
-                TextColumn::make('title')
-								->words(5),
+                TextColumn::make('title')->words(5),
                 TextColumn::make('categories.name'),
-                ImageColumn::make('thumbnail')
-								->disk('public_uploads'),
-								BadgeColumn::make('status')
-								->label('Status')
-                ->colors([
-									'success' => fn ($state): bool => $state === 1, // Published
-									'danger' => fn ($state): bool => $state === 0, // Draft
-								])
-								->formatStateUsing(fn ($state) => $state === 1 ? 'Published' : 'Draft'),
-                
+                ImageColumn::make('thumbnail')->disk('public_uploads'),
+                BadgeColumn::make('status')
+                    ->label('Status')
+                    ->colors([
+                        'success' => fn($state): bool => $state === 1, // Published
+                        'danger' => fn($state): bool => $state === 0, // Draft
+                    ])
+                    ->formatStateUsing(fn($state) => $state === 1 ? 'Published' : 'Draft'),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->actions([Tables\Actions\EditAction::make()])
+            ->bulkActions([Tables\Actions\BulkActionGroup::make([Tables\Actions\DeleteBulkAction::make()])]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
-        ];
+                //
+            ];
     }
 
     public static function getPages(): array

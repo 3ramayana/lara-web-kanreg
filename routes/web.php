@@ -4,6 +4,7 @@ use App\Models\City;
 use App\Models\Post;
 use App\Models\Answer;
 use App\Models\Banner;
+use App\Models\Service;
 use App\Models\Document;
 use App\Models\Employee;
 use App\Models\Question;
@@ -142,8 +143,9 @@ Route::get('layanan/pencantuman-gelar', function () {
 });
 
 Route::get('layanan/pensiun', function () {
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'pensiun')->paginate(6);
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.pensiun', compact('news'));
+	return view('website.pages.services.pensiun', compact('news', 'data'));
 });
 
 Route::get('layanan/pensiun-janda-duda', function () {
