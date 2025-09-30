@@ -8,7 +8,7 @@
                         <span class="sitename">Kantor Regional XIV BKN</span>
                     </a>
                     <div class="footer-contact pt-3">
-                        <p>Jl. Manokwari - Maruni, Anday, Katebu, Distrik Manokwari, Kabupaten Manokwari, Papua Barat
+                        <p>Jl. Brigjen Marinir (purn) Abraham O. Atururi. Komplek Perkantoran Gubernur Arfai, Manokwari, Papua Barat 98135
                         </p>
                         <p>Provinsi Papua Barat</p>
                         <p class="mt-3"><strong>Phone:</strong> <span>+62 821 3886 8989</span></p>
