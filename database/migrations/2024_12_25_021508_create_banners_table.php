@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-						$table->string('name');
-						$table->string('desc');
-						$table->string('file');
-						$table->boolean('is_active')->default(true);
+            $table->string('name');
+            $table->string('desc');
+            $table->string('file');
+            $table->boolean('is_active')->default(true);
+            $table->enum('category', ['banner', 'struktur_kanreg', 'struktur_pimpinan', 'agenda']); 
             $table->timestamps();
         });
     }

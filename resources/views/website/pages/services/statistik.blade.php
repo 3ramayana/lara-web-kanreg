@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row gy-4">
 
-            @foreach ($statistik as $item)
+            @foreach ($akuntabilitas as $item)
                 <div class="col-lg-4">
                     <article class="position-relative h-100">
 
@@ -41,27 +41,19 @@
                         <div class="post-content d-flex flex-column">
 
                             <h3 class="post-title">{{ $item->title }}</h3>
-                            {{-- <p class="opacity-50">
+                            <p class="opacity-50">
                                 <span>Dokumen Publik</span>
                                 <br>
-                                <span>Tahun Anggaran {{ $item->year }}</span>
+                                <span>Tahun {{ $item->year }}</span>
 
 
-                            </p> --}}
-                            <a href="../uploads/{{ $item->file }}" target="_blank"
+                            </p>
+                            <a href="uploads/{{ $item->file }}" target="_blank"
                                 class="readmore stretched-link"><span>Read More</span><i
                                     class="bi bi-arrow-right"></i></a>
 
                         </div>
-
-                    </article>
                 </div>
-            @endforeach
-
-            {{ $statistik->links() }}
-
-
         </div>
-    </div>
 </section>
 @endsection

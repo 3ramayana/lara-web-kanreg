@@ -19,6 +19,7 @@
                         <li><a href="/sejarah" class="{{ request()->is('/sejarah') ? 'active' : '' }}">Sejarah</a></li>
                         <li><a href="/tusi" class="{{ request()->is('/tusi') ? 'active' : '' }}">Tugas & Fungsi</a>
                         </li>
+                        <li><a href="/pimpinan" class="{{ request()->is('/pimpinan') ? 'active' : '' }}">Profil Pejabat Tinggi BKN</a></li>
                         <li><a href="/struktur" class="{{ request()->is('/struktur') ? 'active' : '' }}">Struktur
                                 Organisasi</a></li>
                         {{-- <li><a href="#">Maklumat Pelayanan</a></li> --}}
@@ -32,16 +33,18 @@
                         <li><a href="/announcement">Pengumuman</a></li>
                         <li><a href="https://jdih.bkn.go.id/" target="_blank">Regulasi</a></li>
                         <li><a href="/akuntabilitas">Akuntabilitas Kinerja</a></li>
-                        <li><a href="#">Agenda Kegiatan</a></li>
+                        <li><a href="/agenda">Agenda Kegiatan</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"><span>Pengaduan</span> <i
+                <li class="dropdown"><a href="#"><span>Pelayanan Terpadu</span> <i
                             class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="https://support-siasn.bkn.go.id/">Helpdesk SIASN</a></li>
                         <li><a href="https://helpdesk-sscasn.bkn.go.id/">Helpdesk SSCASN</a></li>
                         <li><a href="https://wbs.bkn.go.id/">WBS BKN</a></li>
                         <li><a href="https://www.lapor.go.id/" target="_blank">LAPOR GO</a></li>
+                        <li><a href="https://www.sipp.menpan.go.id/" target="_blank">SIPP Nasional</a></li>
+                        <li><a href="https://www.bkn.go.id/publikasi/e-library/" target="_blank">e-Library</a></li>
                     </ul>
                 </li>
                 <li><a href="/layanan">Layanan</a></li>

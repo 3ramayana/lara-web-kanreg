@@ -39,20 +39,29 @@ class BannerResource extends Resource
                     ->required()
 										->label('Ket')
                     ->maxLength(255),
+                Forms\Components\Select::make('category')
+                            ->options([
+                                'banner' => 'Banner Utama',
+                                'struktur_kanreg' => 'Stuktur Kantor Regional',
+                                'struktur_pimpinan' => 'Struktur Pimpinan',
+                                'agenda' => 'Agenda Kantor Regional',
+                            ])
+                            ->required()
+                            ->label('Kategori'),    
                 Forms\Components\FileUpload::make('file')
                     ->required()
-										->directory('banners')
-										->disk('public_uploads')
-										->maxSize(2048)
-										->image()
-										->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
-										->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
-										Radio::make('status')
-										->options([
-												'true' => 'Aktif',
-												'false' => 'Tidak Aktif'
-										])
-								])
+                    ->directory('banners')
+                    ->disk('public_uploads')
+                    ->maxSize(2048)
+                    ->image()
+                    ->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
+                    ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
+                    Radio::make('status')
+                    ->options([
+                            'true' => 'Aktif',
+                            'false' => 'Tidak Aktif'
+                    ])
+                ])
 										
             ]);
     }
@@ -62,6 +71,8 @@ class BannerResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('category')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('desc')
                     ->searchable(),
