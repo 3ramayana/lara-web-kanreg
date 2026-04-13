@@ -77,9 +77,9 @@
                             </object>
                             <br>
                             <br>
-                            <a class="btn btn-outline-info" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-                                <h4>Agenda & Kegiatan</h4>
-                            </a>
+
+                            <a href="{{$item->link}}"> <h4>Lihat Selengkapnya....</h4></a>
+
                         </div>
                     @endforeach
                 </article>

@@ -114,32 +114,38 @@ Route::get('layanan', function () {
 // Menu Layanan Kantor Regional XIV BKN
 Route::get('layanan/penetapan-nip-nipppk', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.nip-nipppk', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'nip')->paginate(6);
+	return view('website.pages.services.nip-nipppk', compact('news', 'data'));
 });
 
 Route::get('layanan/cltn', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.cltn', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'cltn')->paginate(6);
+	return view('website.pages.services.cltn', compact('news', 'data'));
 });
 
 Route::get('layanan/kenaikan-pangkat', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.kp', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'kp')->paginate(6);
+	return view('website.pages.services.kp', compact('news', 'data'));
 });
 
 Route::get('layanan/peninjauan-masa-kerja', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.pmk', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'pmk')->paginate(6);
+	return view('website.pages.services.pmk', compact('news', 'data'));
 });
 
 Route::get('layanan/mutasi', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.mutasi', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'mutasi')->paginate(6);
+	return view('website.pages.services.mutasi', compact('news', 'data'));
 });
 
 Route::get('layanan/pencantuman-gelar', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.pg', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'pg')->paginate(6);
+	return view('website.pages.services.pg', compact('news', 'data'));
 });
 
 Route::get('layanan/pensiun', function () {
@@ -150,37 +156,44 @@ Route::get('layanan/pensiun', function () {
 
 Route::get('layanan/pensiun-janda-duda', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.pensiun-janda-duda', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'janda_duda')->paginate(6);
+	return view('website.pages.services.pensiun-janda-duda', compact('news', 'data'));
 });
 
 Route::get('layanan/pengaktifan-pns', function () {
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'pengaktifan')->paginate(6);
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.pengaktifan-pns', compact('news'));
+	return view('website.pages.services.pengaktifan-pns', compact('news', 'data'));
 });
 
 Route::get('layanan/pengangkatan-cpns', function () {
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'pengangkatan')->paginate(6);
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.pengangkatan-cpns', compact('news'));
+	return view('website.pages.services.pengangkatan-cpns', compact('news', 'data'));
 });
 
 Route::get('layanan/peremajaan-data', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.peremajaan-data', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'peremajaan')->paginate(6);
+	return view('website.pages.services.peremajaan-data', compact('news', 'data'));
 });
 
 Route::get('layanan/fasilitasi-seleksi-metode-cat', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.cat', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'cat')->paginate(6);
+	return view('website.pages.services.cat', compact('news', 'data'));
 });
 
 Route::get('layanan/manajemen-talenta', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.manajemen-talenta', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'mt')->paginate(6);
+	return view('website.pages.services.manajemen-talenta', compact('news', 'data'));
 });
 
 Route::get('layanan/pembinaan-manajemen-asn', function () {
 	$news = Post::dataSide()->get();
-	return view('website.pages.services.pembinaan-manajemen', compact('news'));
+	$data = Service::orderBy('created_at', 'desc')->where('category', 'pembinaan')->paginate(6);
+	return view('website.pages.services.pembinaan-manajemen', compact('news', 'data'));
 });
 
 Route::get('layanan/statistik-kepegawaian', function () {
