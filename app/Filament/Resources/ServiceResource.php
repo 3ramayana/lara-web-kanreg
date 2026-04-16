@@ -77,10 +77,19 @@ class ServiceResource extends Resource
         return $table
             ->columns([
             Tables\Columns\TextColumn::make('title')->searchable()->words(5), 
-            Tables\Columns\ImageColumn::make('thumbnail')->searchable(), 
-            Tables\Columns\TextColumn::make('link')->searchable()->words(5), 
-            Tables\Columns\TextColumn::make('document')->searchable(), 
             Tables\Columns\TextColumn::make('category'), 
+            Tables\Columns\ImageColumn::make('thumbnail')
+            ->square()
+            ->searchable()
+            ->disk('public_uploads'), 
+            Tables\Columns\TextColumn::make('link')
+            ->toggleable(isToggledHiddenByDefault: true)
+            ->badge()
+            ->searchable()
+            ->words(3), 
+            Tables\Columns\TextColumn::make('document')
+            ->badge()
+            ->searchable(), 
             Tables\Columns\TextColumn::make('periode')->searchable(), 
             Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true), 
             Tables\Columns\TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true)])
