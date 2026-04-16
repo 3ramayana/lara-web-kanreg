@@ -51,7 +51,9 @@
                                 for informational purposes. The overall tone is formal and respectful, reflecting the importance of retirement 
                                 services."
                                     class="img-fluid"
-                                    style="min-height: 630px; max-height:630px; min-width:auto;max-width:auto">
+                                    style="min-height: 430px; max-height:430px; min-width:auto;max-width:auto">
+                                <br>
+                                <br>
                                 <br>
                             @endif
                             <object data="../uploads/{{ $item->document }}" type="application/pdf" width="100%"
