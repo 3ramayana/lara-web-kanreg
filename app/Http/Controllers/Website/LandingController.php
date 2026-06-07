@@ -12,35 +12,58 @@ use Illuminate\Support\Facades\Http;
 
 class LandingController extends Controller
 {
-	public function index()
-	{
-		$banner = Banner::select('file')->where('category', 'banner')->get();
-		$headline = Post::with(['categories'])->orderBy('created_at', 'desc')->where('status', 1)->where('is_headline', 1)->take(1)->get();
-		$article = Post::with(['categories'])->where('category_id', 2)->where('status', 1)->orderBy('created_at', 'desc')->take(6)->get();
-		$news = Post::with(['categories'])->where('category_id', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(6)->get();
+    public function index()
+    {
+        $banner = \Cache::remember('landing_banner', 1800, function () {
+            return Banner::select('file', 'name', 'desc')->where('category', 'banner')->where('is_active', 1)->get();
+        });
 
-		$faq = Faq::orderBy('created_at', 'desc')->take(5)->get();
-		$announcement = Announcement::where('is_active', 1)->orderBy('created_at', 'DESC')->take(6)->get();
+        $headline = \Cache::remember('landing_headline', 1800, function () {
+            return Post::with(['categories'])->orderBy('created_at', 'desc')->where('status', 1)->where('is_headline', 1)->take(1)->get();
+        });
 
-		$events = [];
-		try{
-					$response = Http::withHeaders([
-					'X-API-KEY' => env('APP_API_KEY'),
-				])->get(env('API_WEBINAR_URL') . '/api/agendas');
+        $article = \Cache::remember('landing_article', 1800, function () {
+            return Post::with(['categories'])->where('category_id', 2)->where('status', 1)->orderBy('created_at', 'desc')->take(6)->get();
+        });
 
-				if ($response->successful()) {
-					$json = $response->json();
-					$events = $json['data'] ?? [];
-				} else {
-					$events = [];
-				}
-		}catch(\Exception $e){
-			\Log::error("Gagal mengambil API Webinar: " . $e->getMessage());
+        $news = \Cache::remember('landing_news', 1800, function () {
+            return Post::with(['categories'])->where('category_id', 1)->where('status', 1)->orderBy('created_at', 'desc')->take(6)->get();
+        });
 
-		}
+        $faq = \Cache::remember('landing_faq', 1800, function () {
+            return Faq::orderBy('created_at', 'desc')->take(5)->get();
+        });
 
-		return view('website.pages.landing', compact('banner', 'headline', 'article', 'news', 'announcement', 'events', 'faq'));
-	}
+        $announcement = \Cache::remember('landing_announcement', 1800, function () {
+            return Announcement::where('is_active', 1)->orderBy('created_at', 'DESC')->take(6)->get();
+        });
+
+        // Smart Caching with Fallback, Timeout, and Retry
+        $events = \Cache::get('webinar_agendas');
+
+        if ($events === null) {
+            try {
+                $response = Http::timeout(5)->retry(2, 100)->withHeaders([
+                    'X-API-KEY' => config('services.webinar.api_key'),
+                ])->get(config('services.webinar.base_url') . '/api/agendas');
+
+                if ($response->successful()) {
+                    $json = $response->json();
+                    $events = $json['data'] ?? [];
+                    // Cache data hanya jika request API sukses
+                    \Cache::put('webinar_agendas', $events, 3600);
+                } else {
+                    // Fallback sementara, tidak di-cache
+                    $events = [];
+                }
+            } catch (\Exception $e) {
+                \Log::error("Gagal mengambil API Webinar: " . $e->getMessage());
+                $events = []; // Fallback error sementara, tidak di-cache
+            }
+        }
+
+        return view('website.pages.landing', compact('banner', 'headline', 'article', 'news', 'announcement', 'events', 'faq'));
+    }
 
 	public function show($slug)
 	{

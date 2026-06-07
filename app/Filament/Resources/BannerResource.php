@@ -30,39 +30,60 @@ class BannerResource extends Resource
     {
         return $form
             ->schema([
-                Card::make()->schema([
-									Forms\Components\TextInput::make('name')
-                    ->required()
-										->label('Judul')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('desc')
-                    ->required()
-										->label('Ket')
-                    ->maxLength(255),
-                Forms\Components\Select::make('category')
-                            ->options([
-                                'banner' => 'Banner Utama',
-                                'struktur_kanreg' => 'Stuktur Kantor Regional',
-                                'struktur_pimpinan' => 'Struktur Pimpinan',
-                                'agenda' => 'Agenda Kantor Regional',
-                            ])
-                            ->required()
-                            ->label('Kategori'),    
-                Forms\Components\FileUpload::make('file')
-                    ->required()
-                    ->directory('banners')
-                    ->disk('public_uploads')
-                    ->maxSize(2048)
-                    ->image()
-                    ->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
-                    ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
-                    Radio::make('status')
-                    ->options([
-                            'true' => 'Aktif',
-                            'false' => 'Tidak Aktif'
-                    ])
+                Forms\Components\Grid::make(3)->schema([
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\Section::make('Informasi Banner')
+                            ->description('Keterangan dan penempatan banner.')
+                            ->icon('heroicon-o-information-circle')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->label('Judul Banner')
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('desc')
+                                    ->required()
+                                    ->label('Keterangan Singkat')
+                                    ->maxLength(255),
+                            ]),
+                    ])->columnSpan(['sm' => 3, 'lg' => 2]),
+
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\Section::make('Pengaturan & File')
+                            ->icon('heroicon-o-cog')
+                            ->schema([
+                                Forms\Components\Select::make('category')
+                                    ->options([
+                                        'banner' => 'Banner Utama',
+                                        'struktur_kanreg' => 'Struktur Kantor Regional',
+                                        'struktur_pimpinan' => 'Struktur Pimpinan',
+                                        'agenda' => 'Agenda Kantor Regional',
+                                    ])
+                                    ->required()
+                                    ->native(false)
+                                    ->label('Kategori Penempatan'),
+                                Forms\Components\Radio::make('is_active')
+                                    ->options([
+                                        1 => 'Aktif (Published)',
+                                        0 => 'Tidak Aktif (Draft)'
+                                    ])
+                                    ->default(1)
+                                    ->label('Status Tayang'),
+                                Forms\Components\FileUpload::make('file')
+                                    ->required()
+                                    ->label('Gambar Banner')
+                                    ->directory('banners')
+                                    ->disk('public_uploads')
+                                    ->maxSize(2048)
+                                    ->image()
+                                    ->imageEditor()
+                                    ->imageResizeMode('cover')
+                                    ->imageResizeTargetWidth('1920')
+                                    ->optimize('webp')
+                                    ->helperText('Gambar akan dikompres & dikonversi otomatis ke WebP. Maks 2MB.')
+                                    ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/webp']),
+                            ]),
+                    ])->columnSpan(['sm' => 3, 'lg' => 1]),
                 ])
-										
             ]);
     }
 

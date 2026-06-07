@@ -28,15 +28,20 @@ class FaqResource extends Resource
     {
         return $form
             ->schema([
-                Card::make()->schema([
-                    TextInput::make('question')
-                    ->required()
-                    ->autocapitalize('sentences')
-                    ->columnSpanFull(),
-                    RichEditor::make('answer')
-                    ->required()
-                    ->columnSpanFull(),
-                ])
+                Forms\Components\Section::make('Informasi FAQ')
+                    ->description('Masukkan pertanyaan yang sering diajukan beserta jawabannya.')
+                    ->icon('heroicon-o-question-mark-circle')
+                    ->schema([
+                        TextInput::make('question')
+                            ->label('Pertanyaan (Question)')
+                            ->required()
+                            ->autocapitalize('sentences')
+                            ->columnSpanFull(),
+                        RichEditor::make('answer')
+                            ->label('Jawaban (Answer)')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])
             ]);
     }
 
@@ -45,10 +50,18 @@ class FaqResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('question')
-                    ->searchable(),
+                    ->label('Pertanyaan')
+                    ->searchable()
+                    ->limit(50)
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('answer')
-                    ->searchable(),
+                    ->label('Jawaban')
+                    ->searchable()
+                    ->formatStateUsing(fn (string $state): string => strip_tags($state))
+                    ->limit(80)
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat pada')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

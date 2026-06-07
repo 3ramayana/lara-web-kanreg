@@ -22,7 +22,13 @@ use App\Http\Controllers\Website\AnnouncementController;
 // Route::get('/', [QuestionController::class, 'all']);
 Route::get('all-question', [QuestionController::class, 'all']);
 
-Route::post('/question', [QuestionController::class, 'store']);
+use App\Http\Controllers\Website\SearchController;
+use App\Http\Controllers\Website\SitemapController;
+
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+
+Route::post('/question', [QuestionController::class, 'store'])->middleware('throttle:5,1');
 Route::get('/category/{id}', [QuestionController::class, 'allCategory']);
 Route::get('/city/{id}', [QuestionController::class, 'allCity']);
 
@@ -32,6 +38,9 @@ Route::get('/announcement', [AnnouncementController::class, 'index']);
 Route::get('/all-news', [NewsController::class, 'allNews']);
 Route::get('/all-article', [NewsController::class, 'allArticle']);
 Route::get('/detail-announcement/{id}', [AnnouncementController::class, 'show']);
+
+use App\Http\Controllers\Website\AsnStatisticPublicController;
+Route::get('/statistik-asn', [AsnStatisticPublicController::class, 'index']);
 
 Route::get('visi-misi', function () {
 	$news = Post::dataSide()->get();
@@ -159,6 +168,9 @@ Route::get('layanan/pensiun-janda-duda', function () {
 	$data = Service::orderBy('created_at', 'desc')->where('category', 'janda_duda')->paginate(6);
 	return view('website.pages.services.pensiun-janda-duda', compact('news', 'data'));
 });
+
+Route::get('/layanan/konsultasi-pensiun', [App\Http\Controllers\Website\PensionConsultationController::class, 'index']);
+Route::get('/layanan/konsultasi-pensiun/suggest', [App\Http\Controllers\Website\PensionConsultationController::class, 'suggest']);
 
 Route::get('layanan/pengaktifan-pns', function () {
 	$data = Service::orderBy('created_at', 'desc')->where('category', 'pengaktifan')->paginate(6);

@@ -32,9 +32,9 @@
                     <!-- Search Widget -->
                     <div class="search-widget widget-item">
 
-                        <h3 class="widget-title">Search</h3>
-                        <form action="">
-                            <input type="text">
+                        <h3 class="widget-title">Pencarian</h3>
+                        <form action="/search" method="GET">
+                            <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari berita atau layanan...">
                             <button type="submit" title="Search"><i class="bi bi-search"></i></button>
                         </form>
 
@@ -47,26 +47,28 @@
 
                     <div class="blog-author-widget widget-item">
                         <iframe width="100%" height="315"
-                            src="https://www.youtube.com/embed/FDFkl_vutoM?si=D9nWihItCQGu50Ze" title="YouTube video player"
+                            src="https://www.youtube.com/embed/videoseries?list=UUBqlmOSbHwfNECbKzFHlqGg" title="YouTube video player"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
 
-                    {{-- <blockquote class="twitter-tweet">
-                        <p lang="in" dir="ltr">Penyesuaian kembali jadwal Seleksi untuk PPPK Tahap II.
-                            <br><br>Yukk lengkapi persyaratanya dan segera selesaikan pendaftaranmu.<a
-                                href="https://twitter.com/hashtag/PejuangNIP2025?src=hash&amp;ref_src=twsrc%5Etfw">#PejuangNIP2025</a><a
-                                href="https://twitter.com/hashtag/SatuDataASN?src=hash&amp;ref_src=twsrc%5Etfw">#SatuDataASN</a><a
-                                href="https://twitter.com/hashtag/ASNNetral?src=hash&amp;ref_src=twsrc%5Etfw">#ASNNetral</a>
-                            <a href="https://t.co/HQmMMTMz7I">pic.twitter.com/HQmMMTMz7I</a>
-                        </p>&mdash; #SatuDataASN
-                        (@BKNgoid) <a
-                            href="https://twitter.com/BKNgoid/status/1876247086745936255?ref_src=twsrc%5Etfw">January 6,
-                            2025</a>
-                    </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
-
+                    <!-- Twitter/X Widget (Single Post from App) -->
+                    <div class="blog-author-widget widget-item">
+                        <blockquote class="twitter-tweet">
+                            <p lang="in" dir="ltr">Penyesuaian kembali jadwal Seleksi untuk PPPK Tahap II.
+                                <br><br>Yukk lengkapi persyaratanya dan segera selesaikan pendaftaranmu.<a
+                                    href="https://twitter.com/hashtag/PejuangNIP2025?src=hash&amp;ref_src=twsrc%5Etfw">#PejuangNIP2025</a><a
+                                    href="https://twitter.com/hashtag/SatuDataASN?src=hash&amp;ref_src=twsrc%5Etfw">#SatuDataASN</a><a
+                                    href="https://twitter.com/hashtag/ASNNetral?src=hash&amp;ref_src=twsrc%5Etfw">#ASNNetral</a>
+                                <a href="https://t.co/HQmMMTMz7I">pic.twitter.com/HQmMMTMz7I</a>
+                            </p>&mdash; #SatuDataASN
+                            (@BKNgoid) <a
+                                href="https://twitter.com/BKNgoid/status/1876247086745936255?ref_src=twsrc%5Etfw">January 6,
+                                2025</a>
+                        </blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
 
                     <!-- Recent Posts Widget 2 -->
                     <div class="recent-posts-widget-2 widget-item">
@@ -74,6 +76,7 @@
 
                         <h3 class="widget-title">Berita Terbaru</h3>
 
+                        @php $news = $news ?? \Cache::remember('sidebar_news', 1800, fn() => App\Models\Post::where('status', 1)->latest()->take(5)->get()); @endphp
                         @foreach ($news as $item)
                             <div class="post-item">
                                 <h4><a href="../detail-post/{{ $item->slug }}">{!! strip_tags(Str::words($item->title, 6, '...')) !!}</a></h4>

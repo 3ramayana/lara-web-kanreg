@@ -73,17 +73,20 @@ class QuestionController extends Controller
     {
 				$validator = $request->validate([
 					'name' => 'required|string|max:30',
-					'nip' => 'numeric|max_digits:18',
-					'instansi' => 'required|string',
+					'nip' => 'nullable|numeric|max_digits:18',
+					'city_id' => 'required|integer|exists:cities,id',
+					'question_category_id' => 'required|integer|exists:question_categories,id',
 					'wa' => 'required|numeric|max_digits:13',
-					'pesan' => 'required|string',
-					// 'g-recaptcha-response' => 'required|captcha'
+					'pesan' => 'required|string|max:2000',
+					'g-recaptcha-response' => 'required|captcha'
 				],[
 					'required' => 'Data Tidak Boleh Kosong',
 					'string' => 'Data Harus Di isi Huruf',
 					'numeric' => 'Data Harus Di isi Angka',
-					// 'captcha' => 'Captcha Tidak Boleh Kosong',
-					'max_digits' => 'Data Harus Lebih Dari'
+					'captcha' => 'Captcha Tidak Boleh Kosong',
+					'max_digits' => 'Data Melebihi Batas Maksimal Digit',
+					'exists' => 'Data Referensi Tidak Valid',
+					'max' => 'Data Melebihi Batas Maksimal Karakter',
 				]);
 
 				$data = Question::create([
@@ -91,7 +94,6 @@ class QuestionController extends Controller
 					'nip' => $request->nip,
 					'city_id' => $request->city_id,
 					'question_category_id' => $request->question_category_id,
-					'instansi' => $request->instansi,
 					'wa' => $request->wa,
 					'pesan' => $request->pesan,
 				]);

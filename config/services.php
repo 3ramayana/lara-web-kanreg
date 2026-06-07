@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'webinar' => [
+        'api_key' => env('APP_API_KEY'),
+        'base_url' => env('API_WEBINAR_URL', 'https://webinar.bkn14.com'),
+    ],
+
 ];

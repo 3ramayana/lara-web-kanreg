@@ -33,44 +33,71 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-							TextInput::make('name')
-										->label('Nama Lengkap')
-											->required(),
-										TextInput::make('nip')
-										->label('NIP')
-										->required()
-										->numeric()
-										->unique(table:User::class),
-										TextInput::make('email')
-												->email()
-												->required()
-												->unique(table:User::class),
-										TextInput::make('password')
-											->password()
-											->required()
-											->confirmed()
-											->rules([
-												'required',
-												Password::min(8)
-														->letters()
-														->numbers()
-														->symbols()
-														->uncompromised(),
-											]),
-										TextInput::make('password_confirmation')
-												->password()
-												->required()
-												->same('password'),
-										Select::make('roles')
-												->label('Role')
-												->required()
-												->relationship('roles', 'name')
-												->multiple()
-												->preload(),
-										Select::make('departement_id')
-												->relationship('departements', 'name')
-												->label('Unit Kerja')
-                
+                Forms\Components\Grid::make(3)->schema([
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\Section::make('Informasi Pribadi')
+                            ->description('Data diri pengguna sistem.')
+                            ->icon('heroicon-o-user')
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label('Nama Lengkap')
+                                    ->required(),
+                                TextInput::make('nip')
+                                    ->label('NIP')
+                                    ->required()
+                                    ->numeric()
+                                    ->unique(ignoreRecord: true),
+                                TextInput::make('email')
+                                    ->email()
+                                    ->required()
+                                    ->unique(ignoreRecord: true),
+                            ])->columns(2),
+
+                        Forms\Components\Section::make('Keamanan & Password')
+                            ->description('Setel kata sandi untuk pengguna ini.')
+                            ->icon('heroicon-o-lock-closed')
+                            ->schema([
+                                TextInput::make('password')
+                                    ->password()
+                                    ->required(fn (string $operation): bool => $operation === 'create')
+                                    ->dehydrated(fn (?string $state) => filled($state))
+                                    ->confirmed()
+                                    ->rules([
+                                        'nullable',
+                                        Password::min(8)
+                                            ->letters()
+                                            ->numbers()
+                                            ->symbols()
+                                            ->uncompromised(),
+                                    ]),
+                                TextInput::make('password_confirmation')
+                                    ->password()
+                                    ->requiredWith('password')
+                                    ->dehydrated(false)
+                                    ->same('password'),
+                            ])->columns(2),
+                    ])->columnSpan(['sm' => 3, 'lg' => 2]),
+
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\Section::make('Hak Akses & Unit Kerja')
+                            ->icon('heroicon-o-shield-check')
+                            ->schema([
+                                Select::make('roles')
+                                    ->label('Role (Peran)')
+                                    ->required()
+                                    ->relationship('roles', 'name')
+                                    ->multiple()
+                                    ->preload()
+                                    ->native(false),
+                                Select::make('departement_id')
+                                    ->relationship('departements', 'name')
+                                    ->label('Unit Kerja')
+                                    ->searchable()
+                                    ->preload()
+                                    ->native(false)
+                            ]),
+                    ])->columnSpan(['sm' => 3, 'lg' => 1]),
+                ])
             ]);
     }
 

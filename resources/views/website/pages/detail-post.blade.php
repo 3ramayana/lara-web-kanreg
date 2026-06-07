@@ -1,5 +1,9 @@
 @extends('website.layout-detail')
 
+@section('meta_title', $post->title . ' - Kantor Regional XIV BKN')
+@section('meta_description', Str::limit(strip_tags($post->content), 150))
+@section('meta_image', asset('uploads/' . $post->thumbnail))
+@section('meta_type', 'article')
 @section('detail-content')
 
 @section('title-detail')
@@ -31,7 +35,7 @@
                 </ul>
             </div><!-- End meta top -->
 
-            <div class="content">{!! $post->content !!}</div><!-- End post content -->
+            <div class="content">{!! clean($post->content) !!}</div><!-- End post content -->
 
             <div class="meta-bottom">
                 <i class="bi bi-folder"></i>

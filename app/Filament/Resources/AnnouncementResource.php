@@ -25,21 +25,50 @@ class AnnouncementResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Card::make([
-                Forms\Components\TextInput::make('title')->required()->label('Judul Pengumuman')->maxLength(255),
-                Forms\Components\RichEditor::make('content')->required()->label('deskripsi'),
-                Forms\Components\FileUpload::make('file')
-                    ->label('Masukkan Foto')
-                    ->directory('announcements')
-                    ->disk('public_uploads')
-                    ->maxSize(2048)
-                    ->image()
-                    ->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
-                    ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png'])
-                    ->rules(['mimes:pdf,jpg,png']),
-                Forms\Components\TextInput::make('link')->label('Masukkan Link Jika Ada')->url(),
-                Forms\Components\Toggle::make('is_active')->label('Status')->required(),
-            ]),
+            Forms\Components\Grid::make(3)->schema([
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('Informasi Pengumuman')
+                        ->description('Judul dan rincian pengumuman.')
+                        ->icon('heroicon-o-speaker-wave')
+                        ->schema([
+                            Forms\Components\TextInput::make('title')
+                                ->required()
+                                ->label('Judul Pengumuman')
+                                ->maxLength(255),
+                            Forms\Components\RichEditor::make('content')
+                                ->required()
+                                ->label('Deskripsi Lengkap'),
+                        ]),
+                ])->columnSpan(['sm' => 3, 'lg' => 2]),
+
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('Pengaturan & Lampiran')
+                        ->icon('heroicon-o-cog')
+                        ->schema([
+                            Forms\Components\Toggle::make('is_active')
+                                ->label('Tampilkan Pengumuman')
+                                ->default(true)
+                                ->required(),
+                            Forms\Components\TextInput::make('link')
+                                ->label('Tautan / URL Tambahan')
+                                ->placeholder('https://...')
+                                ->url(),
+                            Forms\Components\FileUpload::make('file')
+                                ->label('Lampiran Dokumen/Gambar')
+                                ->directory('announcements')
+                                ->disk('public_uploads')
+                                ->maxSize(2048)
+                                ->image()
+                                ->imageEditor()
+                                ->imageResizeMode('cover')
+                                ->imageResizeTargetWidth('1280')
+                                ->optimize('webp')
+                                ->helperText('File gambar (JPG, PNG, WEBP) atau PDF. Gambar akan dikompres otomatis. Maks 2MB.')
+                                ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/webp'])
+                                ->rules(['mimes:pdf,jpg,png,webp']),
+                        ]),
+                ])->columnSpan(['sm' => 3, 'lg' => 1]),
+            ])
         ]);
     }
 

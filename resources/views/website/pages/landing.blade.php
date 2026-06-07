@@ -184,13 +184,19 @@
                                     data-aos-delay="100">
 
                                     <div class="post-img position-relative overflow-hidden">
-                                        <img src="{{ $event['poster'] }}" class="img-fluid" alt=""
+                                        <img src="{{ !empty($event['poster']) ? $event['poster'] : asset('bkn/bkn.png') }}" class="img-fluid" alt=""
                                             style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
-                                            <span class="post-date">{{ \Carbon\Carbon::parse($event['tanggal_pelaksanaan'])->locale('id')->translatedFormat('d F Y') }}</span>
+                                            <span class="post-date">
+                                                @if(!empty($event['tanggal_pelaksanaan']))
+                                                    {{ \Carbon\Carbon::parse($event['tanggal_pelaksanaan'])->locale('id')->translatedFormat('d F Y') }}
+                                                @else
+                                                    Segera Hadir
+                                                @endif
+                                            </span>
                                     </div>
 
                                     <div class="post-content d-flex flex-column flex-grow-1">
-                                        <h3 class="post-title">{{ $event['judul'] }}</h3>
+                                        <h3 class="post-title">{{ $event['judul'] ?? 'Agenda Tanpa Judul' }}</h3>
 
                                         {{-- <ul class="list-unstyled mb-3">
                                             <li><i class="bi bi-calendar-event me-2 text-danger"></i>
@@ -205,7 +211,7 @@
                                         </ul> --}}
                                         <div class="mt-auto">
                                             <hr>
-                                            <a href="{{ env('API_WEBINAR_URL') . '/agenda/' . $event['slug'] }}"
+                                            <a href="{{ config('services.webinar.base_url') . '/agenda/' . $event['slug'] }}"
                                                 class="cta-event" target="_blank">
                                                 <i class="bi bi-info-circle me-1"></i>
                                                 Detail Event
@@ -263,7 +269,7 @@
                                     <div class="faq-container">
                                     @foreach ($faq as $item)
                                         
-                                        <div class="faq-item faq-active">
+                                        <div class="faq-item {{ $loop->first ? 'faq-active' : '' }}">
                                             <h3><span class="num">{{$loop->iteration}}</span> <span>{{$item->question}}</span></h3>
                                             <div class="faq-content">
                                             <p>{!! strip_tags(Str::words($item->answer, 10, '...')) !!}</p>

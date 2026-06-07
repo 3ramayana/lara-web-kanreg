@@ -122,6 +122,19 @@
                     </a>
                 </div>
             </div>
+            {{-- Konsultasi Pensiun --}}
+            <div class="col-lg-3 col-md-4">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="{{ asset('icons/konsultasi.svg') }}" alt="Menu Icon">
+                    </div>
+                    <h3>Konsultasi Pensiun (Pusat Bantuan)</h3>
+                    <p>Layanan pencarian cerdas untuk menyelesaikan kendala teknis dan administrasi seputar pengusulan pensiun ASN.</p>
+                    <a href="/layanan/konsultasi-pensiun" class="service-link">
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
             {{-- Pengaktifan Kembali --}}
             <div class="col-lg-3 col-md-4">
                 <div class="service-card">

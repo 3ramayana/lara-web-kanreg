@@ -34,6 +34,7 @@
                         <li><a href="https://jdih.bkn.go.id/" target="_blank">Regulasi</a></li>
                         <li><a href="/akuntabilitas">Akuntabilitas Kinerja</a></li>
                         <li><a href="/agenda">Agenda Kegiatan</a></li>
+                        <li><a href="/statistik-asn" class="{{ request()->is('statistik-asn') ? 'active' : '' }}">Statistik ASN</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#"><span>Pelayanan Terpadu</span> <i
@@ -58,6 +59,7 @@
 				</li> --}}
                 <li><a href="ppid">PPID BKN</a></li>
                 <li><a href="kontak">Kontak Kami</a></li>
+                <li><a href="/search"><i class="bi bi-search"></i></a></li>
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>

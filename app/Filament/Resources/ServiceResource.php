@@ -27,48 +27,83 @@ class ServiceResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Card::make([
-                Forms\Components\TextInput::make('title')->label('Judul')->required()->maxLength(255),
-                Forms\Components\RichEditor::make('description')->columnSpanFull(),
-                Forms\Components\Select::make('category')
-                    ->options([
-                        'cat' => 'Penggunaan CAT',
-                        'cltn' => 'Cuti diluar Tanggungan Negara',
-                        'kp' => 'Kenaikan Pangkat',
-                        'mt' => 'Manajemen Talenta',
-                        'mutasi' => 'Mutasi',
-                        'nip' => 'Penetapan NIP & PPK',
-                        'pensiun' => 'Pensiun',
-                        'pengangkatan' => 'Pengangkatan C1',
-                        'pg' => 'Penyesuaian Gelar',
-                        'peremajaan' => 'Peremajaan',
-                        'pmk' => 'PMK',
-                        'statistik' => 'Statistik ASN',
-                        'janda_duda' => 'Pensiun Janda/Duda',
-                        'pembinaan' => 'Pembinaan',
-                        'pengaktifan' => 'Pengaktifan PNS',
-                    ])
-                    ->required(),
-                Forms\Components\DatePicker::make('periode')->label('Periode')->required()->placeholder('Pilih Periode')->format('d/m/Y')->native(false),
-                Forms\Components\FileUpload::make('thumbnail')
-                    ->label('Masukkan Foto Progress')
-                    ->directory('service_thumbnails')
-                    ->disk('public_uploads')
-                    ->maxSize(2048)
-                    ->image()
-                    ->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
-                    ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png'])
-                    ->rules(['mimes:pdf,jpg,png']),
-                Forms\Components\TextInput::make('link')->label('Masukkan Link Jika Ada')->url(),
-                Forms\Components\FileUpload::make('document')
-                    ->label('Masukkan Dokumen Progress')
-                    ->directory('service_documents')
-                    ->disk('public_uploads')
-                    ->maxSize(10000)
-                    ->helperText('Hanya file dokumen (PDF). Maksimal ukuran 10 MB.')
-                    ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'])
-                    ->rules(['mimes:pdf']),
-            ]),
+            Forms\Components\Grid::make(3)->schema([
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('Informasi Layanan')
+                        ->description('Penjelasan rinci mengenai status progres layanan.')
+                        ->icon('heroicon-o-information-circle')
+                        ->schema([
+                            Forms\Components\TextInput::make('title')
+                                ->label('Judul / Nama Progres')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\RichEditor::make('description')
+                                ->label('Keterangan Progres')
+                                ->columnSpanFull(),
+                        ]),
+                ])->columnSpan(['sm' => 3, 'lg' => 2]),
+
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('Detail Kategori')
+                        ->icon('heroicon-o-tag')
+                        ->schema([
+                            Forms\Components\Select::make('category')
+                                ->label('Jenis Layanan')
+                                ->options([
+                                    'cat' => 'Penggunaan CAT',
+                                    'cltn' => 'Cuti diluar Tanggungan Negara',
+                                    'kp' => 'Kenaikan Pangkat',
+                                    'mt' => 'Manajemen Talenta',
+                                    'mutasi' => 'Mutasi',
+                                    'nip' => 'Penetapan NIP & PPK',
+                                    'pensiun' => 'Pensiun',
+                                    'pengangkatan' => 'Pengangkatan C1',
+                                    'pg' => 'Penyesuaian Gelar',
+                                    'peremajaan' => 'Peremajaan',
+                                    'pmk' => 'PMK',
+                                    'statistik' => 'Statistik ASN',
+                                    'janda_duda' => 'Pensiun Janda/Duda',
+                                    'pembinaan' => 'Pembinaan',
+                                    'pengaktifan' => 'Pengaktifan PNS',
+                                ])
+                                ->native(false)
+                                ->searchable()
+                                ->required(),
+                            Forms\Components\DatePicker::make('periode')
+                                ->label('Periode Pelaksanaan')
+                                ->required()
+                                ->placeholder('Pilih Tanggal')
+                                ->format('d/m/Y')
+                                ->native(false),
+                            Forms\Components\TextInput::make('link')
+                                ->label('Tautan External')
+                                ->placeholder('https://...')
+                                ->url(),
+                        ]),
+
+                    Forms\Components\Section::make('Lampiran File')
+                        ->icon('heroicon-o-paper-clip')
+                        ->schema([
+                            Forms\Components\FileUpload::make('thumbnail')
+                                ->label('Thumbnail Progres')
+                                ->directory('service_thumbnails')
+                                ->disk('public_uploads')
+                                ->maxSize(2048)
+                                ->image()
+                                ->imageEditor()
+                                ->helperText('Format JPG/PNG. Maks 2 MB.')
+                                ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
+                            Forms\Components\FileUpload::make('document')
+                                ->label('Dokumen Progres (PDF)')
+                                ->directory('service_documents')
+                                ->disk('public_uploads')
+                                ->maxSize(10000)
+                                ->helperText('Hanya file dokumen PDF. Maks 10 MB.')
+                                ->acceptedFileTypes(['application/pdf'])
+                                ->rules(['mimes:pdf']),
+                        ]),
+                ])->columnSpan(['sm' => 3, 'lg' => 1]),
+            ])
         ]);
     }
 
