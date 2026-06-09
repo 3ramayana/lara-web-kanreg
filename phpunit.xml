@@ -28,5 +28,7 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="NOCAPTCHA_SECRET" value="dummy-secret"/>
+        <env name="NOCAPTCHA_SITEKEY" value="dummy-sitekey"/>
     </php>
 </phpunit>

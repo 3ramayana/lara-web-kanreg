@@ -75,10 +75,9 @@ class BannerResource extends Resource
                                     ->disk('public_uploads')
                                     ->maxSize(2048)
                                     ->image()
-                                    ->imageEditor()
-                                    ->imageResizeMode('cover')
-                                    ->imageResizeTargetWidth('1920')
-                                    ->optimize('webp')
+                                    // ->imageEditor()
+                                    // ->imageResizeMode('cover')
+                                    // ->imageResizeTargetWidth('1920')
                                     ->helperText('Gambar akan dikompres & dikonversi otomatis ke WebP. Maks 2MB.')
                                     ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/webp']),
                             ]),

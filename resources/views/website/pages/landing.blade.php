@@ -7,7 +7,7 @@
 
             @foreach ($banner as $banner)
                 <div class="carousel-item active">
-                    <img src="uploads/{{ $banner->file }}" alt="" class="img-fluid">
+                    <img src="{{ asset('uploads/' . $banner->file) }}" alt="" class="img-fluid">
                     {{-- <div class="carousel-container">
 				<h2>{{$banner->name}}</h2>
 				<p>{{$banner->desc}}</p>
@@ -242,7 +242,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center carousel">
-                            <img src="{{ 'bkn/announce.png' }}" alt="" class="img-fluid">
+                            <img src="{{ asset('bkn/announce.png') }}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -305,7 +305,7 @@
                 <div class="row">
                     @foreach ($headline as $item)
                         <div class="col-lg-6 mb-4 mb-lg-0">
-                            <img src="uploads/{{ $item->thumbnail }}" alt="Image " class="img-fluid img-overlap rounded-4"
+                            <img src="{{ asset('uploads/' . $item->thumbnail) }}" alt="Image " class="img-fluid img-overlap rounded-4"
                                 data-aos="zoom-out" style="height: auto; max-height:auto; min-width:100%;max-width:100%">
                         </div>
                         <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
@@ -341,7 +341,7 @@
                         <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
 
                             <div class="post-img position-relative overflow-hidden">
-                                <img src="uploads/{{ $item->thumbnail }}" class="img-fluid" alt=""
+                                <img src="{{ asset('uploads/' . $item->thumbnail) }}" class="img-fluid" alt=""
                                     style="min-height: 300px; max-height:300px; min-width:450px; max-width:450px; object-fit: cover">
                                 <span class="post-date">{{ $item->created_at->locale('id')->translatedFormat('d F Y') }}</span>
                             </div>
@@ -436,7 +436,7 @@
                                             <h2 class="service-item-title">{{ $item->title }}</h2>
                                         </a>
                                     </div>
-                                    <img src="uploads/{{ $item->thumbnail }}" alt="Image" class="img-fluid"
+                                    <img src="{{ asset('uploads/' . $item->thumbnail) }}" alt="Image" class="img-fluid"
                                         style="min-height: 450px; max-height:450px; min-width:450px; max-width:450px; object-fit: cover">
                                 </div>
                             </div>

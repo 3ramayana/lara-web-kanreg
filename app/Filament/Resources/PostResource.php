@@ -112,10 +112,9 @@ class PostResource extends Resource
                                 ->disk('public_uploads')
                                 ->maxSize(2048)
                                 ->image()
-                                ->imageEditor() // Mengaktifkan fitur crop/edit gambar bawaan Filament
-                                ->imageResizeMode('cover')
-                                ->imageResizeTargetWidth('1280')
-                                ->optimize('webp')
+                                // ->imageEditor() // Mengaktifkan fitur crop/edit gambar bawaan Filament
+                                // ->imageResizeMode('cover')
+                                // ->imageResizeTargetWidth('1280')
                                 ->helperText('Gambar akan dikompres & dikonversi otomatis ke WebP. Maks 2MB.')
                                 ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/webp']),
                         ]),

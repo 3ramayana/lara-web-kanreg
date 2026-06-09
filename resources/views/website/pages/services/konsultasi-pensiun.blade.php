@@ -137,12 +137,12 @@
                                     <div class="overflow-hidden">
                                         <div class="mb-3 mt-3">
                                             <strong><i class="bi bi-exclamation-triangle text-danger"></i> Kendala yang Relevan:</strong>
-                                            <div class="mt-2 text-muted">{!! $item->problem !!}</div>
+                                            <div class="mt-2 text-muted">{!! clean($item->problem) !!}</div>
                                         </div>
                                         @if(!empty($item->resolution))
                                         <div class="p-3 bg-light border-start border-4 border-success rounded">
                                             <strong><i class="bi bi-check-circle-fill text-success"></i> Rekomendasi Penyelesaian:</strong>
-                                            <div class="mt-2">{!! $item->resolution !!}</div>
+                                            <div class="mt-2">{!! clean($item->resolution) !!}</div>
                                         </div>
                                         @endif
                                         

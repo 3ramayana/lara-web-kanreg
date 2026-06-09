@@ -46,7 +46,7 @@ HELPDESK SSCASN
 											{{$item->created_at->format('d M Y')}},  {{$item->created_at->format('H:i')}}
 										</time>
 										<p>
-											{!!$item->pesan!!}
+											{!! nl2br(e($item->pesan)) !!}
 										</p>
 									</div>
 								</div>
@@ -59,7 +59,7 @@ HELPDESK SSCASN
 										<h5><a href="">Admin Helpdesk</a> <a href="#" class="reply"></a></h5>
 										<time datetime="2020-01-01"></time>
 										<p style="justify-content: center">
-											{!!$item->jawaban!!}
+											{!! clean($item->jawaban) !!}
 										</p>
 									</div>
 								</div>

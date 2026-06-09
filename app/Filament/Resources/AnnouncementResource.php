@@ -62,10 +62,9 @@ class AnnouncementResource extends Resource
                                 ->imageEditor()
                                 ->imageResizeMode('cover')
                                 ->imageResizeTargetWidth('1280')
-                                ->optimize('webp')
                                 ->helperText('File gambar (JPG, PNG, WEBP) atau PDF. Gambar akan dikompres otomatis. Maks 2MB.')
-                                ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/webp'])
-                                ->rules(['mimes:pdf,jpg,png,webp']),
+                                ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/webp', 'application/pdf'])
+                                ->rules(['mimes:pdf,jpg,jpeg,png,webp']),
                         ]),
                 ])->columnSpan(['sm' => 3, 'lg' => 1]),
             ])
