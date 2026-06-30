@@ -7,7 +7,7 @@
 
             @foreach ($banner as $banner)
                 <div class="carousel-item active">
-                    <img src="uploads/{{ $banner->file }}" alt="" class="img-fluid">
+                    <img src="{{ asset('uploads/' . $banner->file) }}" alt="" class="img-fluid">
                     {{-- <div class="carousel-container">
 				<h2>{{$banner->name}}</h2>
 				<p>{{$banner->desc}}</p>
@@ -184,13 +184,19 @@
                                     data-aos-delay="100">
 
                                     <div class="post-img position-relative overflow-hidden">
-                                        <img src="{{ $event['poster'] }}" class="img-fluid" alt=""
+                                        <img src="{{ !empty($event['poster']) ? $event['poster'] : asset('bkn/bkn.png') }}" class="img-fluid" alt=""
                                             style="min-height: 240px; max-height:240px; min-width:450px; max-width:450px; object-fit: cover; object-position:top;">
-                                            <span class="post-date">{{ \Carbon\Carbon::parse($event['tanggal_pelaksanaan'])->locale('id')->translatedFormat('d F Y') }}</span>
+                                            <span class="post-date">
+                                                @if(!empty($event['tanggal_pelaksanaan']))
+                                                    {{ \Carbon\Carbon::parse($event['tanggal_pelaksanaan'])->locale('id')->translatedFormat('d F Y') }}
+                                                @else
+                                                    Segera Hadir
+                                                @endif
+                                            </span>
                                     </div>
 
                                     <div class="post-content d-flex flex-column flex-grow-1">
-                                        <h3 class="post-title">{{ $event['judul'] }}</h3>
+                                        <h3 class="post-title">{{ $event['judul'] ?? 'Agenda Tanpa Judul' }}</h3>
 
                                         {{-- <ul class="list-unstyled mb-3">
                                             <li><i class="bi bi-calendar-event me-2 text-danger"></i>
@@ -205,7 +211,7 @@
                                         </ul> --}}
                                         <div class="mt-auto">
                                             <hr>
-                                            <a href="{{ env('API_WEBINAR_URL') . '/agenda/' . $event['slug'] }}"
+                                            <a href="{{ config('services.webinar.base_url') . '/agenda/' . $event['slug'] }}"
                                                 class="cta-event" target="_blank">
                                                 <i class="bi bi-info-circle me-1"></i>
                                                 Detail Event
@@ -236,7 +242,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center carousel">
-                            <img src="{{ 'bkn/announce.png' }}" alt="" class="img-fluid">
+                            <img src="{{ asset('bkn/announce.png') }}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -263,7 +269,7 @@
                                     <div class="faq-container">
                                     @foreach ($faq as $item)
                                         
-                                        <div class="faq-item faq-active">
+                                        <div class="faq-item {{ $loop->first ? 'faq-active' : '' }}">
                                             <h3><span class="num">{{$loop->iteration}}</span> <span>{{$item->question}}</span></h3>
                                             <div class="faq-content">
                                             <p>{!! strip_tags(Str::words($item->answer, 10, '...')) !!}</p>
@@ -299,7 +305,7 @@
                 <div class="row">
                     @foreach ($headline as $item)
                         <div class="col-lg-6 mb-4 mb-lg-0">
-                            <img src="uploads/{{ $item->thumbnail }}" alt="Image " class="img-fluid img-overlap rounded-4"
+                            <img src="{{ asset('uploads/' . $item->thumbnail) }}" alt="Image " class="img-fluid img-overlap rounded-4"
                                 data-aos="zoom-out" style="height: auto; max-height:auto; min-width:100%;max-width:100%">
                         </div>
                         <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
@@ -335,7 +341,7 @@
                         <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
 
                             <div class="post-img position-relative overflow-hidden">
-                                <img src="uploads/{{ $item->thumbnail }}" class="img-fluid" alt=""
+                                <img src="{{ asset('uploads/' . $item->thumbnail) }}" class="img-fluid" alt=""
                                     style="min-height: 300px; max-height:300px; min-width:450px; max-width:450px; object-fit: cover">
                                 <span class="post-date">{{ $item->created_at->locale('id')->translatedFormat('d F Y') }}</span>
                             </div>
@@ -430,7 +436,7 @@
                                             <h2 class="service-item-title">{{ $item->title }}</h2>
                                         </a>
                                     </div>
-                                    <img src="uploads/{{ $item->thumbnail }}" alt="Image" class="img-fluid"
+                                    <img src="{{ asset('uploads/' . $item->thumbnail) }}" alt="Image" class="img-fluid"
                                         style="min-height: 450px; max-height:450px; min-width:450px; max-width:450px; object-fit: cover">
                                 </div>
                             </div>

@@ -27,39 +27,58 @@ class DocumentResource extends Resource
     {
         return $form
             ->schema([
-								Card::make()->schema([
-									Forms\Components\TextInput::make('title')
-										->label('Judul Dokumen')
-										->autocomplete(false)
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('category_id')
-                    ->required()
-										->relationship('categories', 'name')
-										->label('Kategori'),
-                Forms\Components\RichEditor::make('desc')
-										->label('Deskripsi (optional)'),
-                Forms\Components\FileUpload::make('file')
-                    ->required()
-										->label('Upload Dokumen')
-										->directory('documents')
-										->disk('public_uploads')
-                    ->maxSize(2048)
-										// ->minSize(200)
-										->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']),
-                Select::make('is_public')
-										->label('Status')
-										->options([
-												0 => 'Private',
-												1 => 'Public',
-										])
-										->default(0) // Default: Draft
-										->required(),
-                Forms\Components\TextInput::make('year')
-                    ->required()
-										->numeric()
-                    ->maxLength(4),
-								])
+                Forms\Components\Grid::make(3)->schema([
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\Section::make('Detail Dokumen')
+                            ->description('Informasi utama tentang dokumen yang akan diunggah.')
+                            ->icon('heroicon-o-document-text')
+                            ->schema([
+                                Forms\Components\TextInput::make('title')
+                                    ->label('Judul Dokumen')
+                                    ->autocomplete(false)
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\RichEditor::make('desc')
+                                    ->label('Deskripsi Lengkap (Opsional)'),
+                            ]),
+                    ])->columnSpan(['sm' => 3, 'lg' => 2]),
+
+                    Forms\Components\Group::make()->schema([
+                        Forms\Components\Section::make('Klasifikasi & File')
+                            ->icon('heroicon-o-archive-box')
+                            ->schema([
+                                Forms\Components\Select::make('category_id')
+                                    ->required()
+                                    ->relationship('categories', 'name')
+                                    ->native(false)
+                                    ->searchable()
+                                    ->preload()
+                                    ->label('Kategori Dokumen'),
+                                Forms\Components\TextInput::make('year')
+                                    ->required()
+                                    ->label('Tahun Terbit')
+                                    ->numeric()
+                                    ->maxLength(4),
+                                Select::make('is_public')
+                                    ->label('Aksesibilitas')
+                                    ->options([
+                                        0 => 'Private (Hanya Internal)',
+                                        1 => 'Public (Bisa Diunduh Umum)',
+                                    ])
+                                    ->default(0)
+                                    ->native(false)
+                                    ->required(),
+                                Forms\Components\FileUpload::make('file')
+                                    ->required()
+                                    ->label('Unggah Berkas')
+                                    ->directory('documents')
+                                    ->disk('public_uploads')
+                                    ->maxSize(2048)
+                                    ->helperText('Format PDF/Word. Maks 2MB.')
+                                    ->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']),
+                            ]),
+                    ])->columnSpan(['sm' => 3, 'lg' => 1]),
+                ])
             ]);
     }
 
@@ -68,22 +87,31 @@ class DocumentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label('Judul Dokumen')
+                    ->searchable()
+                    ->wrap(),
+                Tables\Columns\TextColumn::make('categories.name')
+                    ->label('Kategori')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('category_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('file')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('desc')
+                    ->label('Deskripsi')
+                    ->searchable()
+                    ->formatStateUsing(fn (string $state): string => strip_tags($state))
+                    ->limit(50)
+                    ->wrap()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\IconColumn::make('is_public')
-                    ->boolean(),
+                    ->label('Akses Publik')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-lock-closed'),
                 Tables\Columns\TextColumn::make('year')
+                    ->label('Tahun')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->label('Diunggah Pada')
+                    ->dateTime('d M Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

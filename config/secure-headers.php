@@ -145,13 +145,13 @@ return [
      * Note: Please ensure your website had set up ssl/tls before enable hsts.
      */
     'hsts' => [
-        'enable' => false,
+        'enable' => true,
 
         'max-age' => 31536000,
 
-        'include-sub-domains' => false,
+        'include-sub-domains' => true,
 
-        'preload' => false,
+        'preload' => true,
     ],
 
     /**
@@ -636,7 +636,7 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri
         'base-uri' => [
-            //
+            'self',
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/child-src
@@ -651,7 +651,7 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/default-src
         'default-src' => [
-            //
+            'self',
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/fenced-frame-src
@@ -666,7 +666,7 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/form-action
         'form-action' => [
-            //
+            'self',
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors
@@ -676,12 +676,17 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-src
         'frame-src' => [
-            //
+            'https://syndication.twitter.com',
+            'https://platform.twitter.com',
+            'https://www.instagram.com',
+            'https://www.youtube.com',
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/img-src
         'img-src' => [
-            //
+            'self',
+            'data:',
+            'https:',
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/manifest-src
@@ -746,12 +751,15 @@ return [
         'script-src' => [
             'none' => false,
 
-            'self' => false,
+            'self' => true,
 
             'report-sample' => false,
 
             'allow' => [
-                // 'url',
+                'https://www.google.com',
+                'https://www.gstatic.com',
+                'https://platform.twitter.com',
+                'https://syndication.twitter.com',
             ],
 
             'schemes' => [
@@ -761,9 +769,9 @@ return [
 
             /* followings are only work for `script` and `style` related directives */
 
-            'unsafe-inline' => false,
+            'unsafe-inline' => true,
 
-            'unsafe-eval' => false,
+            'unsafe-eval' => true,
 
             // https://www.w3.org/TR/CSP3/#unsafe-hashes-usage
             'unsafe-hashes' => false,
@@ -800,7 +808,11 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
         'style-src' => [
-            //
+            'self' => true,
+            'unsafe-inline' => true,
+            'allow' => [
+                'https://fonts.googleapis.com',
+            ],
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src-attr

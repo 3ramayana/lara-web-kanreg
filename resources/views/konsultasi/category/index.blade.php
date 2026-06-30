@@ -46,7 +46,7 @@
 										{{$item->created_at->format('d M Y')}},  {{$item->created_at->format('H:i')}}
 									</time>
 									<p>
-										{!!$item->pesan!!}
+										{!! nl2br(e($item->pesan)) !!}
 									</p>
 								</div>
 							</div>
@@ -59,7 +59,7 @@
 									<h5><a href="">Admin Kopace</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
 									<time datetime="2020-01-01"></time>
 									<p>
-										{!!$item->jawaban!!}
+										{!! clean($item->jawaban) !!}
 									</p>
 								</div>
 							</div>

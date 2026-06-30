@@ -139,8 +139,8 @@ KOPACE - Konsultasi Pelayanan Cepat
 						<div class="swiper-slide">
 							<div class="item">
 								<h3 class="mb-3">{{$item->question_category->name}}</h3>
-								<h4 class="mb-3">{!!strip_tags(Str::words($item->pesan, 20, '...'))!!}</h4>
-								<p>{!!strip_tags(Str::words($item->jawaban, 20, '...'))!!}</p>
+								<h4 class="mb-3">{{ strip_tags(Str::words($item->pesan, 20, '...')) }}</h4>
+								<p>{{ strip_tags(Str::words($item->jawaban, 20, '...')) }}</p>
 							</div>
 						</div>
 

@@ -38,39 +38,88 @@ class PostResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Card::make()->schema([
-                Select::make('category_id')->relationship(name: 'categories', titleAttribute: 'name'),
-                TextInput::make('title')->live(onBlur: true)->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))->required()->autocapitalize('words'),
-                TextInput::make('slug')->required()->readOnly(),
-                // SpatieMediaLibraryFileUpload::make('thumbnail'),
-                FileUpload::make('thumbnail')
-                    ->required()
-                    ->label('Thumbnail Postingan')
-                    ->directory('post-thumbnail')
-                    ->disk('public_uploads')
-                    ->maxSize(2048)
-                    ->image()
-                    ->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
-                    ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
-                RichEditor::make('content')->required(),
-                // Toggle::make('status'),
-                Select::make('status')
-                    ->label('Status')
-                    ->options([
-                        0 => 'Draft',
-                        1 => 'Published',
-                    ])
-                    ->default(0) // Default: Draft
-                    ->required(),
-                Select::make('is_headline')
-                    ->label('Postingan Headline')
-                    ->options([
-                        0 => 'Bukan Headline',
-                        1 => 'Headline',
-                    ])
-                    ->default(0) // Default: Draft
-                    ->required(),
-            ]),
+            Forms\Components\Grid::make(3)->schema([
+                // Kolom Utama (Kiri)
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('Konten Berita')
+                        ->description('Masukkan judul dan isi teks berita secara lengkap.')
+                        ->icon('heroicon-o-document-text')
+                        ->schema([
+                            Forms\Components\TextInput::make('title')
+                                ->label('Judul Berita')
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                ->required()
+                                ->autocapitalize('words')
+                                ->maxLength(255),
+                                
+                            Forms\Components\TextInput::make('slug')
+                                ->label('URL Slug')
+                                ->required()
+                                ->readOnly()
+                                ->helperText('URL berita akan ter-generate otomatis.'),
+                                
+                            Forms\Components\RichEditor::make('content')
+                                ->label('Isi Konten')
+                                ->required()
+                                ->columnSpanFull(),
+                        ])->columns(2),
+                ])->columnSpan(['sm' => 3, 'md' => 3, 'lg' => 2]),
+
+                // Kolom Pengaturan (Kanan)
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('Pengaturan')
+                        ->description('Tentukan kategori dan status publikasi.')
+                        ->icon('heroicon-o-cog-6-tooth')
+                        ->schema([
+                            Forms\Components\Select::make('category_id')
+                                ->label('Kategori Berita')
+                                ->relationship(name: 'categories', titleAttribute: 'name')
+                                ->required()
+                                ->searchable()
+                                ->preload()
+                                ->native(false),
+
+                            Forms\Components\Select::make('status')
+                                ->label('Status Publikasi')
+                                ->options([
+                                    0 => 'Draft',
+                                    1 => 'Published',
+                                ])
+                                ->default(0)
+                                ->required()
+                                ->native(false),
+
+                            Forms\Components\Select::make('is_headline')
+                                ->label('Tipe Sorotan')
+                                ->options([
+                                    0 => 'Biasa (Standar)',
+                                    1 => 'Jadikan Headline',
+                                ])
+                                ->default(0)
+                                ->required()
+                                ->native(false),
+                        ]),
+
+                    Forms\Components\Section::make('Media Visual')
+                        ->description('Unggah gambar sampul.')
+                        ->icon('heroicon-o-photo')
+                        ->schema([
+                            Forms\Components\FileUpload::make('thumbnail')
+                                ->required()
+                                ->label('Thumbnail Postingan')
+                                ->directory('post-thumbnail')
+                                ->disk('public_uploads')
+                                ->maxSize(2048)
+                                ->image()
+                                // ->imageEditor() // Mengaktifkan fitur crop/edit gambar bawaan Filament
+                                // ->imageResizeMode('cover')
+                                // ->imageResizeTargetWidth('1280')
+                                ->helperText('Gambar akan dikompres & dikonversi otomatis ke WebP. Maks 2MB.')
+                                ->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png', 'image/webp']),
+                        ]),
+                ])->columnSpan(['sm' => 3, 'md' => 3, 'lg' => 1]),
+            ])
         ]);
     }
 

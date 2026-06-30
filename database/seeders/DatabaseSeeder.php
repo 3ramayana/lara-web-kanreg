@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
 		//     'email' => 'test@example.com',
 		// ]);
 
-		City::create([
-			'name' => 'Kabupaten Sorong',
-			'slug' => 'kabupaten-sorong'
-		]);
+		// City::create([
+		// 	'name' => 'Kabupaten Sorong',
+		// 	'slug' => 'kabupaten-sorong'
+		// ]);
 
 		Ministry::create([
 			'name' => 'KEMENKUMHAM',
@@ -75,6 +75,16 @@ class DatabaseSeeder extends Seeder
 		// Category::create([
 		// 	'name' => 'Artikel Kepegawaian',
 		// 	'slug' => 'artike-kepegawaian'
+		// ]);
+
+		// Category::create([
+		// 	'name' => 'Pengumuman',
+		// 	'slug' => 'pengumuman'
+		// ]);
+
+		// Category::create([
+		// 	'name' => 'Dokumen',
+		// 	'slug' => 'dokumen'
 		// ]);
 
 		// Category::create([
