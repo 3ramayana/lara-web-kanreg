@@ -19,7 +19,10 @@ return [
 
     'allowed_methods' => ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => [
+        'https://www.manokwari.bkn.go.id',
+        'https://webinar.bkn14.com',
+    ],
 
     'allowed_origins_patterns' => [],
 

@@ -37,9 +37,9 @@ class PensionConsultationController extends Controller
             // Analytics: Catat jika hasil pencarian kosong
             if ($scoredCases->isEmpty()) {
                 \App\Models\UnresolvedSearchLog::create([
-                    'query' => $query,
+                    'query' => strip_tags($query),
                     'ip_address' => $request->ip(),
-                    'user_agent' => $request->userAgent(),
+                    'user_agent' => substr($request->userAgent(), 0, 500),
                 ]);
             }
 

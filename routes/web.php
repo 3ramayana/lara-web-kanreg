@@ -29,8 +29,8 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 Route::post('/question', [QuestionController::class, 'store'])->middleware('throttle:5,1');
-Route::get('/category/{id}', [QuestionController::class, 'allCategory']);
-Route::get('/city/{id}', [QuestionController::class, 'allCity']);
+Route::get('/category/{id}', [QuestionController::class, 'allCategory'])->whereNumber('id');
+Route::get('/city/{id}', [QuestionController::class, 'allCity'])->whereNumber('id');
 
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/detail-post/{slug}', [LandingController::class, 'show']);

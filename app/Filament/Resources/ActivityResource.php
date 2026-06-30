@@ -18,6 +18,11 @@ class ActivityResource extends Resource
     protected static ?string $navigationLabel = 'Log Aktivitas (Audit Trail)';
     protected static ?string $pluralModelLabel = 'Log Aktivitas';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->hasRole('admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form->schema([]);
